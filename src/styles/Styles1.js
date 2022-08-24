@@ -44,7 +44,7 @@ export const Form2 = styled.form`
 `
 
 
-export const DivCuenta =styled.div`
+export const DivCuenta = styled.div`
                 margin-top: 5em;
                 div:nth-child(2){
                         text-align: center;
@@ -181,9 +181,11 @@ export const DivCard2 = styled.div`
                 max-width:15em;
                 img{
                 height: 100%;
+                width: 100%;
                 object-fit: cover;
                 object-position: center center;
-        }
+                border: 1px solid red;
+                }
         }
 `
 

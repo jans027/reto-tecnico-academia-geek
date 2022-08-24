@@ -92,7 +92,6 @@ export const Home2 = () => {
 
     <div className="col-12">
       <div className="row">
-        <NavBar />
         {
           Work?.map(elemento => (
             <div className="col-12 mt-4">
