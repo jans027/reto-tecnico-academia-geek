@@ -2,15 +2,22 @@ import styled from "styled-components";
 
 
 export const NavBarStyled = styled.nav`
-    height: 130px;
+    font-size: 2em;
+    height: 90px;
     width:100%;
     display: flex;
-    justify-content: space-arround;
+    justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    background: #1F233E;
     margin-top: -20px;
-  
+    padding: 0 3em 0 3em;
+    button{
+        border: none;
+        cursor: pointer;
+        svg{
+            color: red;
+        }
+    }
 `
 
 export const NavBarStyled1 = styled.nav`
@@ -22,7 +29,6 @@ export const NavBarStyled1 = styled.nav`
     flex-wrap: wrap;
     margin:10px;
     font-size:22px;
-   
 `
 
 export const DivForm = styled.div`

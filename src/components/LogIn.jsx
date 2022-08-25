@@ -1,10 +1,10 @@
 
 import "../Global.css"
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 // import { useAuth } from "../context/AuthContext";
 // import { Alert } from "./Pag3";
-import { ButtonIntro, ImgIntro, TextIntro, Singupfrm, Form, Label, Input1, InputContainer, ButtonIntro1, Body } from '../styles/PagIntro'
+import { TextIntro, Singupfrm, Form, Label, Input1, InputContainer, ButtonIntro1 } from '../styles/PagIntro'
 import logogoogle from '../images/logogoogle.png'
 import logofb from '../images/logofb.png'
 // import portada from '../images/portada.png'
@@ -137,15 +137,6 @@ export function LogIn() {
                 </div>
               </Form>
             </Singupfrm>
-          </div>
-        </div>
-
-
-        <div className="col-12  mt-2">
-          <div className="container" Style="text-align:center">
-            <a href="#!" Style="font-weight:400; font-size:12px;" >
-              Forgot Password?
-            </a>
           </div>
         </div>
 
