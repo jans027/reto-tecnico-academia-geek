@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 
-export const NavBarStyled = styled.nav `
+export const NavBarStyled = styled.nav`
     height: 130px;
     width:100%;
     display: flex;
@@ -11,9 +11,9 @@ export const NavBarStyled = styled.nav `
     background: #1F233E;
     margin-top: -20px;
   
-` 
+`
 
-export const NavBarStyled1 = styled.nav `
+export const NavBarStyled1 = styled.nav`
     height: 40px;
     width:100%;
     display: flex;
@@ -23,7 +23,7 @@ export const NavBarStyled1 = styled.nav `
     margin:10px;
     font-size:22px;
    
-` 
+`
 
 export const DivForm = styled.div`
 display: grid;
@@ -38,7 +38,7 @@ scrollbar-width: none;
 }
 `
 export const ImgIntro1 = styled.div`
-background:;
+/* background:; */
 border-radius: 10%;
 background-repeat: no-repeat;
     width: 270px;
@@ -48,18 +48,18 @@ background-repeat: no-repeat;
     margin-top:10px;
  
 `
-export const Producto=styled.div`
+export const Producto = styled.div`
 height:500px;
 width: 500px;
 
 `
 export const ImgIntro2 = styled.div`
-background:;
+/* background:; */
 border-radius: 10%;
 background-repeat: no-repeat;
     width: 270px;
     height: 220px;
-    objet-fit: cover;
+    object-fit: cover;
     scroll-snap-align: start;
   
     background-size: cover;
@@ -88,10 +88,10 @@ background-color: #8e44ad;
         outline: none;
         background-color: #5e3370;
     }`
-   
-   
-   export const SpinnerStyled = styled.div`
-        with: 100%;
+
+
+export const SpinnerStyled = styled.div`
+        width: 100%;
         height: 90vh;
         background-color: #FFF;
         display: flex;
@@ -99,7 +99,7 @@ background-color: #8e44ad;
         margin: 20%;
    `
 
-   export const ContainerStyled = styled.div`
+export const ContainerStyled = styled.div`
    background-color: #FFF;
    border-radius: 10px;
    box-shadow: 0 0 10px 2px rgba(100, 100, 100, 0.1);

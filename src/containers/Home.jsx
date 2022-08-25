@@ -4,7 +4,7 @@ import React from 'react'
 
 export const Home = () => {
   return (
-    <Link to="/pag1">
+    <Link to="/LogIn">
       <DivPadre>
         <DivCard2>
           <img src="https://i.ibb.co/ck7kfQn/580b57fcd9996e24bc43c325.png" alt="picachu" border="0" />

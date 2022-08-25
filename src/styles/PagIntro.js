@@ -1,5 +1,5 @@
-import styled from 'styled-components'; 
-import {Link} from 'react-router-dom';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 
 
@@ -16,7 +16,7 @@ export const Container1 = styled.div`
       aling-items: center;
       justify-content: center;
   `
-      export const ButtonLink = styled.link`
+export const ButtonLink = styled.link`
 
       position: relative;
       outline: none;
@@ -255,7 +255,7 @@ margin-bootom:20px;
 `
 
 
- export const Body = styled.body `
+export const Body = styled.body`
   
     color: #fff;
     background-color:  #1F233E;
@@ -317,7 +317,7 @@ position:relative;
 
 `
 export const ImgIntro = styled.div`
-background: url(${({Image}) => Image && Image});
+background: url(${({ Image }) => Image && Image});
 height:350px;
 width:350px;
 background-repeat: no-repeat;
@@ -345,7 +345,7 @@ p{
 }
 `
 
-export const TextIntro= styled.div`
+export const TextIntro = styled.div`
 display:flex;
 flex-direction: column;
 align-items: center;
@@ -371,18 +371,18 @@ font-size: 14px;
 }
 `
 
-export const Singupfrm= styled.div`
+export const Singupfrm = styled.div`
 display: flex;
 justify-content: center;
 align-items: center;
 margin-top:0px;
 `
-export const Form= styled.form`
+export const Form = styled.form`
 margin-top:0px;
 text-align: center;
 justify-content: center;
 `
-export const InputContainer= styled.div`
+export const InputContainer = styled.div`
   position:relative;
     height: 45px;
     width: 90%;
@@ -391,7 +391,7 @@ export const InputContainer= styled.div`
     
 `
 
-export const Input1= styled.input`
+export const Input1 = styled.input`
 position:relative;
 width: 358px;
 height: 44px;
@@ -400,10 +400,9 @@ border-radius: 44px;
 font-size: 16px;
 padding: 0 20px;
 outline: none;
-background-color: rgb(46, 53, 98);
 z-index: 1;
 &:focus{ top: -7px;
-    border-color:  #39ff14;
+    /* border-color:  #39ff14; */
     left: 3px;
     z-index: 10;
     font-size: 14px;
@@ -417,7 +416,7 @@ z-index: 1;
         font-weight: 600;}
 
 `
-export const Label= styled.label`
+export const Label = styled.label`
 position: absolute;
 text-align: center;
     margin-top: 7px;
@@ -444,10 +443,10 @@ text-align: center;
 `
 
 
-const Image = ({Image}) => {
-    return(
+const Image = ({ Image }) => {
+    return (
         <ImgIntro Image={Image}></ImgIntro>
     )
-    }
-    
-    export default Image;
+}
+
+export default Image;

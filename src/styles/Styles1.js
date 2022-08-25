@@ -170,25 +170,36 @@ export const DivCard = styled.div`
                 object-fit: cover;
                 object-position: center center;
         }
-`;
+`
 export const DivCard2 = styled.div`
-        width: 100%;
-        display: flex;
+        max-width: 19em;
+        /* display: flex;
         justify-content: center;
-        align-items: center;
+        align-items: center; */
         overflow: hidden;
-        div{
-                max-width:15em;
-                img{
+        margin-bottom: 1em;
+        img{
                 height: 100%;
                 width: 100%;
                 object-fit: cover;
                 object-position: center center;
-                border: 1px solid red;
                 }
-        }
 `
+export const DivPadre2 = styled.div`
+        display: flex;
+        /* height: 100vh; */
+        padding: 5em;
+        flex-direction: column;
+        justify-content: center;
+        align-items:center;
+        background-color: var(--main-bg-color);
+        span{
+                text-align: center;
+                font-size: 2em;
+                font-family:var(--font-1);
+        }
 
+`
 
 
 export const Enlace1 = styled.span`
@@ -209,13 +220,13 @@ export const Enlace1 = styled.span`
                 border-radius:1.5em;
         }
 `
-
 export const DivPadre = styled.div`
         display: flex;
         height: 100vh;
         padding: 5em;
         flex-direction: column;
         justify-content: center;
+        align-items:center;
         background-color: var(--main-bg-color);
         span{
                 text-align: center;
@@ -224,6 +235,7 @@ export const DivPadre = styled.div`
         }
 
 `
+
 export const LinearBarStyled = styled.div`
                 width: 90%;
                 padding-top: 20vh;
@@ -417,3 +429,10 @@ export const DivNav2 = styled.nav`
         }
 
 `
+
+
+
+
+
+
+
