@@ -11,12 +11,11 @@ export const NavBarStyled = styled.nav`
     flex-wrap: wrap;
     margin-top: -20px;
     padding: 0 3em 0 3em;
+    h6{
+        font-size: .8em;
+    }
     button{
         border: none;
-        cursor: pointer;
-        svg{
-            color: red;
-        }
     }
 `
 
