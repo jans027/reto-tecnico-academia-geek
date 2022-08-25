@@ -12,7 +12,7 @@ import logofb from '../images/logofb.png'
 import { loginGoogle, LoginWithEmail } from "../Redux/Actions/userAction";
 import { useDispatch } from "react-redux";
 // import { NavBar2 } from "./NavBar2";
-import { BotonRedes, DivCard2, DivPadre2 } from "../styles/Styles1";
+import { DivCard2, DivPadre2 } from "../styles/Styles1";
 
 export function LogIn() {
 

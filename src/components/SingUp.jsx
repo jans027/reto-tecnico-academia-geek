@@ -1,15 +1,16 @@
 import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "../context/AuthContext";
-import { Alert } from "./Pag3";
-import { ButtonIntro1, TextIntro, Singupfrm, Form, Label, Input1, InputContainer } from '../styles/PagIntro'
-import { auth, createUserDocument } from "../firebase";
-import logogoogle from '../images/logogoogle.png'
-import logofb from '../images/logofb.png'
-import portada from '../images/portada.png'
+import { 
+  ButtonIntro1,
+  TextIntro, 
+  Singupfrm, 
+  Form, 
+  Label, 
+  Input1, 
+  InputContainer 
+} from '../styles/PagIntro'
 import { registerWithEmail } from "../Redux/Actions/userAction";
-import { NavBar2 } from "./NavBar2";
 import { DivCard2, DivPadre2 } from "../styles/Styles1";
 
 export function SingUp() {
