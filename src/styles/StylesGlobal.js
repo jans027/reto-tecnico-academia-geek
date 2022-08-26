@@ -12,6 +12,8 @@ export const NavBarStyled = styled.nav`
     align-items: center;
     flex-wrap: wrap;
     padding: 0 3em 0 3em;
+    -webkit-box-shadow: -8px 30px 42px -13px rgba(0,0,0,0.3); 
+    box-shadow: -8px 30px 42px -13px rgba(0,0,0,0.3);
     h6{
         font-size: .8em;
     }

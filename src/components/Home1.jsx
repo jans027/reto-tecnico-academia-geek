@@ -24,7 +24,7 @@ export const Home1 = () => {
   // console.log(numero.offset)
 
   const [pokeData, setPokeData] = useState([]);
-  console.log(pokeData)
+  // console.log(pokeData)
 
 
   const buscarId = async (item) => {
