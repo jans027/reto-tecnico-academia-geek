@@ -25,7 +25,7 @@ export const AppRoutes = () => {
             if (user?.uid) {
                 dispatch(loginProvider(user.uid, user.displayName))
                 setAuth(true)
-                console.log(user)
+                // console.log(user)
             } else {
                 setAuth(false)
             }

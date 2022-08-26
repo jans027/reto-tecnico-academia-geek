@@ -430,7 +430,9 @@ export const DivNav2 = styled.nav`
 
 `
 
-
+export const Pokemones = styled.div`
+        margin-top: 100px;
+`
 
 
 

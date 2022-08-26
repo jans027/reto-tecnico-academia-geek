@@ -1,7 +1,11 @@
 
-export const ObtenerPokemones = 
-    'ObtenerPokemones'
+export const ObtenerPokemones = {
+    pokemones: 'ObtenerPokemones'
+}
 
+export const siguientePokemones = {
+    siguientePokemones: 'siguientePokemones'
+}
 
 
 

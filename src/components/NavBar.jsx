@@ -10,7 +10,7 @@ const NavBar = () => {
 
     const uid = useSelector(state => state.login)
     const name = uid.name;
-    console.log(name)
+    // console.log(name)
 
     const LogOut = () =>{
         signOut(auth);

@@ -2,6 +2,8 @@ import styled from "styled-components";
 
 
 export const NavBarStyled = styled.nav`
+    position: fixed;
+    top: 0;
     font-size: 2em;
     height: 90px;
     width:100%;
@@ -9,7 +11,6 @@ export const NavBarStyled = styled.nav`
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    margin-top: -20px;
     padding: 0 3em 0 3em;
     h6{
         font-size: .8em;
