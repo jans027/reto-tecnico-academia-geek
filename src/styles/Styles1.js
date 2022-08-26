@@ -2,8 +2,12 @@ import styled from "styled-components";
 import Offcanvas from 'react-bootstrap/Offcanvas';
 
 
-
-
+export const VentanaModal = styled.div`
+        border: 1px solid red;
+        div{
+                border: 1px solid red;
+        }
+`
 export const Div7 = styled.section`
                 text-align: center;
                 height: 100px;
