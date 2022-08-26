@@ -109,9 +109,9 @@ export const Home1 = () => {
       {
         pokeData.map((element) => (
           <VentanaModal>
-            <Button variant="outlined" onClick={handleClickOpen}>
+            {/* <Button variant="outlined" onClick={handleClickOpen}>
               Slide in alert dialog
-            </Button>
+            </Button> */}
             <Dialog
               open={open}
               TransitionComponent={Transition}
@@ -121,24 +121,21 @@ export const Home1 = () => {
               Key={element.id}
             >
               <DialogTitle>{element.name}</DialogTitle>
-              <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${element.id}.svg`} alt="" />
+              <img
+                src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${element.id}.svg`} alt={element.name} />
               <DialogContent>
-                <DialogContentText id="alert-dialog-slide-description">
-                  Let Google help apps determine location. This means sending anonymous
-                  location data to Google, even when no apps are running.
+                <DialogContentText
+                sx={{padding:'0 10em',color: '#f9fbe7',bgcolor: '#71c7dd2b',}}
+                  id="alert-dialog-slide-description">
+                  Weight : {element.weight}
+                </DialogContentText>
+                <DialogContentText
+                sx={{padding:'0 10em',color: '#f9fbe7',bgcolor: '#71c7dd2b',}}
+                  id="alert-dialog-slide-description">
+                  Height : {element.height}
                 </DialogContentText>
               </DialogContent>
               <DialogActions>
-                <Button
-                  sx={{
-                    display: 'flex',
-                    width: '20%',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    bgcolor: '#3f9db5',
-                    color: '#f9fbe7',
-                    borderRadius: 1,
-                  }} onClick={handleClose}>Disagree</Button>
                 <Button sx={{
                   display: 'flex',
                   width: '20%',
