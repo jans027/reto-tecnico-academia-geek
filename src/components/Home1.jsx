@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { obtenerPokemonesAction, siguientePokemonAction } from '../Redux/Actions/pokeAction';
-import { Pokemones } from '../styles/Styles1';
+import { CardPokemon, PokeBoton, Pokemones } from '../styles/Styles1';
 import NavBar from './NavBar';
 
 import Card from '@mui/material/Card';
@@ -23,50 +23,49 @@ export const Home1 = () => {
   const numero = useSelector(state => state.pokemones)
   // console.log(numero.offset)
 
-  const [pokeData,setPokeData]=useState([]);
-  // console.log(pokeData)
+  const [pokeData, setPokeData] = useState([]);
+  console.log(pokeData)
 
-  
-  const buscarId = async(item) =>{
+
+  const buscarId = async (item) => {
     // console.log('Hola',item)
     try {
-      const result=await axios.get(item)
+      const result = await axios.get(item)
       // console.log(result.data)
-      setPokeData(state=>{
-        state=[...state,result.data]
+      setPokeData(state => {
+        state = [...state, result.data]
         return state;
-    })
+      })
     } catch (error) {
       console.log(error)
     }
   }
-  
+
 
 
   return (
     <div>
       <NavBar />
-
       <Pokemones >
-        <button onClick={() => dispatch(obtenerPokemonesAction())}>
+        <PokeBoton onClick={() => dispatch(obtenerPokemonesAction())}>
           Get Pokemones
-        </button>
-        <button onClick={() => dispatch(siguientePokemonAction(25))}>
+        </PokeBoton>
+        <PokeBoton onClick={() => dispatch(siguientePokemonAction(25))}>
           Next
-        </button>
-        <div>
+        </PokeBoton>
+        <CardPokemon>
           {
             verPokemones.map((item, i) => (
-              <Card 
-              sx={{ maxWidth: 345 }}
-              onClick={()=>buscarId(item.url)}
+              <Card
+                sx={{ maxWidth: 250 }}
+                onClick={() => buscarId(item.url)}
               >
                 <CardActionArea>
                   <CardMedia
                     component="img"
                     key={item.name}
                     value={item.url}
-                    height="140"
+                    height="200"
                     image={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${i + numero.offset + 1}.png`}
                     alt={item.name}
                   />
@@ -79,7 +78,7 @@ export const Home1 = () => {
               </Card>
             ))
           }
-        </div>
+        </CardPokemon>
       </Pokemones >
     </div>
   )

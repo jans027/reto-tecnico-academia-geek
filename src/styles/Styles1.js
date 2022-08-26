@@ -432,9 +432,33 @@ export const DivNav2 = styled.nav`
 
 export const Pokemones = styled.div`
         margin-top: 100px;
+        text-align: center;
 `
 
+export const PokeBoton = styled.button`
+        border: 1px solid white;
+        padding: .5em 2em;
+        border-radius: 1.5em;
+        margin: 0 1em;
+        :hover{
+                background-color: steelblue;
+        }
+`
 
+export const CardPokemon = styled.div`
+        margin-top: 1em;
+        gap:.5em;
+        display: inline-flex;
+        flex-wrap:wrap;
+        min-width: 300px;
+        justify-content:center;
+        gap: 1.5em;
+        img{
+                height: 100%;
+                object-fit: cover;
+                object-position: center center;
+        }
+`
 
 
 
