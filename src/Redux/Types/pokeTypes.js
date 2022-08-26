@@ -7,7 +7,9 @@ export const siguientePokemones = {
     siguientePokemones: 'siguientePokemones'
 }
 
-
+export const BuscarPokemones = {
+    BuscarPokemones: 'BuscarPokemones'
+}
 
 
 

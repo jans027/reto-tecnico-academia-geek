@@ -1,5 +1,5 @@
 import axios from "axios"
-import { ObtenerPokemones, siguientePokemones } from "../Types/pokeTypes"
+import { BuscarPokemones, ObtenerPokemones, siguientePokemones } from "../Types/pokeTypes"
 
 
 
@@ -13,6 +13,19 @@ export const obtenerPokemonesAction = () => async (dispatch, getState) => {
         const res = await axios.get(`https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=25`)
         dispatch({
             type:ObtenerPokemones.pokemones,
+            payload: res.data.results
+        })
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const buscarPokemonesAction = () => async (dispatch, getState) => {
+
+    try {
+        const res = await axios.get(`https://pokeapi.co/api/v2/pokemon/`)
+        dispatch({
+            type:BuscarPokemones.BuscarPokemones,
             payload: res.data.results
         })
     } catch (error) {

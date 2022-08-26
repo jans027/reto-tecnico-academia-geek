@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavBarStyled } from '../styles/StylesGlobal';
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { auth } from '../firebase';
 import { signOut } from "firebase/auth";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
+import axios from 'axios';
+import { buscarPokemonesAction } from '../Redux/Actions/pokeAction';
 
 const NavBar = () => {
 
@@ -16,18 +18,38 @@ const NavBar = () => {
         signOut(auth);
     }
 
+    // buscador
+    const dispatch = useDispatch();
+    const verPokemones = useSelector(store => store.BuscarPokemones)
+    const [busqueda, setBusqueda] = useState("");
+    // console.log(verPokemones)
+
+    const handleChange = e => {
+        e.preventDefault()
+        setBusqueda(e.target.value)
+        console.log('Busqueda', e.target.value)
+    }
+
+    const filtrar = () =>{
+
+    }
+
+    // useEffect(()=>{
+    //     peticionGet();
+    // })
+
 
     return (
         <div className="col-12 fixed-top mt-3" >
             <div className="row">
                 <NavBarStyled>
                     <h6 Style="font-weight:400;"> Hi! {name}</h6>
-                    <form action="">
-                        <input type="search" name="" id="" />
-                        <button type="submit">
+                    <div>
+                        <input onChange={handleChange} type="search" name="" id="" />
+                        <button onClick={() => dispatch(buscarPokemonesAction())}>
                             <FontAwesomeIcon icon={faMagnifyingGlass} />
                         </button>
-                    </form>
+                    </div>
                     <button onClick={LogOut}>
                         <FontAwesomeIcon icon={faRightFromBracket} />
                     </button>

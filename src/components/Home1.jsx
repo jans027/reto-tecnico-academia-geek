@@ -56,9 +56,9 @@ export const Home1 = () => {
   }
 
   // Ventana Modal
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
+  // const handleClickOpen = () => {
+  //   setOpen(true);
+  // };
 
   const handleClose = () => {
     setOpen(false);
@@ -133,6 +133,11 @@ export const Home1 = () => {
                 sx={{padding:'0 10em',color: '#f9fbe7',bgcolor: '#71c7dd2b',}}
                   id="alert-dialog-slide-description">
                   Height : {element.height}
+                </DialogContentText>
+                <DialogContentText
+                sx={{padding:'0 10em',color: '#f9fbe7',bgcolor: '#71c7dd2b',}}
+                  id="alert-dialog-slide-description">
+                  Experience: {element.base_experience}
                 </DialogContentText>
               </DialogContent>
               <DialogActions>
