@@ -1,10 +1,9 @@
 import axios from 'axios';
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { obtenerPokemonesAction, siguientePokemonAction } from '../Redux/Actions/pokeAction';
 import { Pokemones } from '../styles/Styles1';
 import NavBar from './NavBar';
-import pokebola from '../imagenes/pokebola.png';
 
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -18,12 +17,30 @@ import { CardActionArea } from '@mui/material';
 export const Home1 = () => {
 
   const dispatch = useDispatch();
-  const verPokemones = useSelector(store=> store.pokemones.array)
+  const verPokemones = useSelector(store => store.pokemones.array)
   // console.log('pokeArray',verPokemones)
-  // console.log(url)
 
   const numero = useSelector(state => state.pokemones)
   // console.log(numero.offset)
+
+  const [pokeData,setPokeData]=useState([]);
+  // console.log(pokeData)
+
+  
+  const buscarId = async(item) =>{
+    // console.log('Hola',item)
+    try {
+      const result=await axios.get(item)
+      // console.log(result.data)
+      setPokeData(state=>{
+        state=[...state,result.data]
+        return state;
+    })
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  
 
 
   return (
@@ -40,22 +57,26 @@ export const Home1 = () => {
         <div>
           {
             verPokemones.map((item, i) => (
-                <Card sx={{ maxWidth: 345 }}>
-            <CardActionArea>
-                <CardMedia
-                    key={item.name}
+              <Card 
+              sx={{ maxWidth: 345 }}
+              onClick={()=>buscarId(item.url)}
+              >
+                <CardActionArea>
+                  <CardMedia
                     component="img"
+                    key={item.name}
+                    value={item.url}
                     height="140"
-                    image={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${i+numero.offset+1}.png`}
+                    image={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${i + numero.offset + 1}.png`}
                     alt={item.name}
-                />
-                <CardContent>
+                  />
+                  <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
-                    {item.name}
+                      {item.name}
                     </Typography>
-                </CardContent>
-            </CardActionArea>
-        </Card>
+                  </CardContent>
+                </CardActionArea>
+              </Card>
             ))
           }
         </div>
