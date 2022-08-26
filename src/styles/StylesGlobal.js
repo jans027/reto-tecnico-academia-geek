@@ -20,6 +20,18 @@ export const NavBarStyled = styled.nav`
     button{
         border: none;
     }
+    input{
+        border: 1px solid white;
+        height: 1.3em;
+        border-radius: 1em;
+        padding: 1em;
+        outline: none;
+        font-size: .6em;
+        :focus{
+            border: 1px solid white;
+            background-color: steelblue;
+        }
+    }
 `
 
 export const NavBarStyled1 = styled.nav`
@@ -83,7 +95,7 @@ export const Titulo = styled.h1`
 `
 
 export const ButtonStyled = styled.button`
-background-color: #8e44ad;
+    background-color: #8e44ad;
     border: none;
     width: 100%;
     font-size: 1.1rem;
@@ -105,15 +117,15 @@ export const SpinnerStyled = styled.div`
         display: flex;
         justify-content:center;
         margin: 20%;
-   `
+`
 
 export const ContainerStyled = styled.div`
-   background-color: #FFF;
-   border-radius: 10px;
-   box-shadow: 0 0 10px 2px rgba(100, 100, 100, 0.1);
-   width: 80%;
-   padding: 4rem;
-   display: flex;
-   flex-direction: column;
-   align-items: center;
+        border-radius: 10px;
+        box-shadow: 0 0 10px 2px rgba(100, 100, 100, 0.1);
+        width: 80%;
+        padding: 4rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #FFF;
 `

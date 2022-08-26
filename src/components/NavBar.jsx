@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 import { auth } from '../firebase';
 import { signOut } from "firebase/auth";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
+import { faMagnifyingGlass, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 
 const NavBar = () => {
 
@@ -12,7 +12,7 @@ const NavBar = () => {
     const name = uid.name;
     // console.log(name)
 
-    const LogOut = () =>{
+    const LogOut = () => {
         signOut(auth);
     }
 
@@ -22,8 +22,14 @@ const NavBar = () => {
             <div className="row">
                 <NavBarStyled>
                     <h6 Style="font-weight:400;"> Hi! {name}</h6>
+                    <form action="">
+                        <input type="search" name="" id="" />
+                        <button type="submit">
+                            <FontAwesomeIcon icon={faMagnifyingGlass} />
+                        </button>
+                    </form>
                     <button onClick={LogOut}>
-                        <FontAwesomeIcon icon={faRightFromBracket }/>
+                        <FontAwesomeIcon icon={faRightFromBracket} />
                     </button>
                 </NavBarStyled>
             </div>
