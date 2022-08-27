@@ -55,10 +55,6 @@ export const Home1 = () => {
     }
   }
 
-  // Ventana Modal
-  // const handleClickOpen = () => {
-  //   setOpen(true);
-  // };
 
   const handleClose = () => {
     setOpen(false);

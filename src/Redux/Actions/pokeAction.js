@@ -23,7 +23,7 @@ export const obtenerPokemonesAction = () => async (dispatch, getState) => {
 export const buscarPokemonesAction = () => async (dispatch, getState) => {
 
     try {
-        const res = await axios.get(`https://pokeapi.co/api/v2/pokemon/`)
+        const res = await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0`)
         dispatch({
             type:BuscarPokemones.BuscarPokemones,
             payload: res.data.results

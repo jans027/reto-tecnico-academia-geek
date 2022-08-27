@@ -20,23 +20,19 @@ const NavBar = () => {
 
     // buscador
     const dispatch = useDispatch();
-    const verPokemones = useSelector(store => store.BuscarPokemones)
+    const verPokemones = useSelector(store => store.pokemones.busqueda)
     const [busqueda, setBusqueda] = useState("");
-    // console.log(verPokemones)
+    console.log(verPokemones)
+    
+
+    const filtro =  verPokemones.filter(verPokemones => verPokemones.name === busqueda)
+    console.log(filtro)
 
     const handleChange = e => {
         e.preventDefault()
         setBusqueda(e.target.value)
-        console.log('Busqueda', e.target.value)
+        // console.log('Busqueda', e.target.value)
     }
-
-    const filtrar = () =>{
-
-    }
-
-    // useEffect(()=>{
-    //     peticionGet();
-    // })
 
 
     return (
@@ -45,7 +41,7 @@ const NavBar = () => {
                 <NavBarStyled>
                     <h6 Style="font-weight:400;"> Hi! {name}</h6>
                     <div>
-                        <input onChange={handleChange} type="search" name="" id="" />
+                        <input value={busqueda} onChange={handleChange} type="search" name="" id="" />
                         <button onClick={() => dispatch(buscarPokemonesAction())}>
                             <FontAwesomeIcon icon={faMagnifyingGlass} />
                         </button>
