@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { obtenerPokemonesAction, siguientePokemonAction } from '../Redux/Actions/pokeAction';
-import { CardPokemon, PokeBoton, Pokemones, VentanaModal } from '../styles/Styles1';
+import { CardPokemon, DivModal, PokeBoton, Pokemones, VentanaModal } from '../styles/Styles1';
 import NavBar from './NavBar';
 // importaciones tarjetas
 import Card from '@mui/material/Card';
@@ -113,37 +113,41 @@ export const Home1 = () => {
               aria-describedby="alert-dialog-slide-description"
               Key={element.id}
             >
-              <DialogTitle>{element.name}</DialogTitle>
-              <img
-                src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${element.id}.svg`} alt={element.name} />
-              <DialogContent>
-                <DialogContentText
-                sx={{padding:'0 10em',color: '#f9fbe7',bgcolor: '#71c7dd2b',}}
-                  id="alert-dialog-slide-description">
-                  Weight : {element.weight}
-                </DialogContentText>
-                <DialogContentText
-                sx={{padding:'0 10em',color: '#f9fbe7',bgcolor: '#71c7dd2b',}}
-                  id="alert-dialog-slide-description">
-                  Height : {element.height}
-                </DialogContentText>
-                <DialogContentText
-                sx={{padding:'0 10em',color: '#f9fbe7',bgcolor: '#71c7dd2b',}}
-                  id="alert-dialog-slide-description">
-                  Experience: {element.base_experience}
-                </DialogContentText>
-              </DialogContent>
-              <DialogActions>
-                <Button sx={{
-                  display: 'flex',
-                  width: '20%',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  bgcolor: '#3f9db5',
-                  color: '#f9fbe7',
-                  borderRadius: 1,
-                }} onClick={handleClose}>Close</Button>
-              </DialogActions>
+
+              <DivModal>
+                <DialogTitle>{element.name}</DialogTitle>
+                <img
+                  src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${element.id}.svg`} alt={element.name} />
+                <DialogContent>
+                  <DialogContentText
+                    sx={{  color: '#f9fbe7', bgcolor: '#71c7dd2b', }}
+                    id="alert-dialog-slide-description">
+                    Weight : {element.weight}
+                  </DialogContentText>
+                  <DialogContentText
+                    sx={{ color: '#f9fbe7', bgcolor: '#71c7dd2b', }}
+                    id="alert-dialog-slide-description">
+                    Height : {element.height}
+                  </DialogContentText>
+                  <DialogContentText
+                    sx={{ color: '#f9fbe7', bgcolor: '#71c7dd2b', }}
+                    id="alert-dialog-slide-description">
+                    Experience: {element.base_experience}
+                  </DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                  <Button sx={{
+                    display: 'flex',
+                    width: '20%',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    bgcolor: '#3f9db5',
+                    color: '#f9fbe7',
+                    borderRadius: 1,
+                  }} onClick={handleClose}>Close</Button>
+                </DialogActions>
+              </DivModal>
+
             </Dialog>
           </VentanaModal>
         ))

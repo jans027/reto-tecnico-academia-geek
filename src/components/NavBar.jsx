@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { NavBarStyled } from '../styles/StylesGlobal';
 import { useDispatch, useSelector } from 'react-redux'
 import { auth } from '../firebase';
-import { signOut } from "firebase/auth";
+import { reload, signOut } from "firebase/auth";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
@@ -16,6 +16,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Slide from '@mui/material/Slide';
+import { DivModal, VentanaModal } from '../styles/Styles1';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
@@ -44,36 +45,35 @@ const NavBar = () => {
     // console.log(filtro)
 
 
+
     const buscarPoke = async () => {
         // console.log('Hola',filtro)
         const [data] = filtro
         const url = data.url
-        // setOpen(true);
+        // console.log(url)
         try {
             const result = await axios.get(url)
             // console.log(result.data)
             // alert('Pokemon Encontrado')
             setOpen(true);
+
             setPokeBusqueda(state => {
                 state = [...state, result.data]
                 return state;
             })
         } catch (error) {
-            console.log(error)
+            // console.log(error)
+            // alert('No Encontrado')
         }
     }
 
     // Modal
     const [open, setOpen] = React.useState(false);
 
-    // const handleClickOpen = () => {
-    //     setOpen(true);
-    // };
-
     const handleClose = () => {
         setOpen(false);
         pokeBusqueda.pop(' ')
-        return  pokeBusqueda 
+        return pokeBusqueda
     };
 
 
@@ -90,12 +90,18 @@ const NavBar = () => {
             <div className="row">
                 <NavBarStyled>
                     <h6 Style="font-weight:400;"> Hi! {name}</h6>
+
                     <div>
                         <input value={busqueda} onChange={handleChange} type="search" name="" id="" />
-                        <button  onClick={() => dispatch(buscarPokemonesAction())}>
-                            <FontAwesomeIcon onClick={() => buscarPoke()} icon={faMagnifyingGlass} />
+                        <button onClick={() => {
+                            dispatch(buscarPokemonesAction())
+                        }}>
+                            <FontAwesomeIcon onClick={() => {
+                                buscarPoke()
+                            }} icon={faMagnifyingGlass} />
                         </button>
                     </div>
+
                     <button onClick={LogOut}>
                         <FontAwesomeIcon icon={faRightFromBracket} />
                     </button>
@@ -105,7 +111,7 @@ const NavBar = () => {
             {/* Modal */}
             {
                 pokeBusqueda.map((element) => (
-                    <div>
+                    <VentanaModal>
                         <Dialog
                             open={open}
                             TransitionComponent={Transition}
@@ -113,19 +119,47 @@ const NavBar = () => {
                             onClose={handleClose}
                             aria-describedby="alert-dialog-slide-description"
                         >
-                            <DialogTitle>{element.name}</DialogTitle>
-                            <DialogContent>
-                                <DialogContentText id="alert-dialog-slide-description">
-                                    Let Google help apps determine location. This means sending anonymous
-                                    location data to Google, even when no apps are running.
-                                </DialogContentText>
-                            </DialogContent>
-                            <DialogActions>
-                                <Button onClick={handleClose}>Disagree</Button>
-                                <Button onClick={handleClose}>Agree</Button>
-                            </DialogActions>
+
+                            <DivModal>
+                                <DialogTitle>{element.name}</DialogTitle>
+                                <img
+                                    src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${element.id}.svg`} alt={element.name} />
+                                <DialogContent>
+                                    <DialogContentText
+                                        sx={{ color: '#f9fbe7', bgcolor: '#71c7dd2b', }}
+                                        id="alert-dialog-slide-description">
+                                        Weight : {element.weight}
+                                    </DialogContentText>
+                                    <DialogContentText
+                                        sx={{ color: '#f9fbe7', bgcolor: '#71c7dd2b', }}
+                                        id="alert-dialog-slide-description">
+                                        Height : {element.height}
+                                    </DialogContentText>
+                                    <DialogContentText
+                                        sx={{ color: '#f9fbe7', bgcolor: '#71c7dd2b', }}
+                                        id="alert-dialog-slide-description">
+                                        Experience: {element.base_experience}
+                                    </DialogContentText>
+                                </DialogContent>
+                                <DialogActions>
+                                    <Button sx={{
+                                        display: 'flex',
+                                        width: '20%',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        bgcolor: '#3f9db5',
+                                        color: '#f9fbe7',
+                                        borderRadius: 1,
+                                    }}
+                                        onClick={() => {
+                                            handleClose()
+                                        }}
+                                    >Close</Button>
+                                </DialogActions>
+                            </DivModal>
+
                         </Dialog>
-                    </div>
+                    </VentanaModal>
                 ))
             }
         </div>

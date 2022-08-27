@@ -4,14 +4,14 @@ import styled from "styled-components";
 export const NavBarStyled = styled.nav`
     position: fixed;
     top: 0;
-    font-size: 2em;
+    font-size: 1.5em;
     height: 90px;
     width:100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    padding: 0 3em 0 3em;
+    padding: 0 .3em 0 1em;
     -webkit-box-shadow: -8px 30px 42px -13px rgba(0,0,0,0.3); 
     box-shadow: -8px 30px 42px -13px rgba(0,0,0,0.3);
     h6{
@@ -21,6 +21,8 @@ export const NavBarStyled = styled.nav`
         border: none;
     }
     input{
+
+        max-width: 200px;
         border: 1px solid white;
         height: 1.3em;
         border-radius: 1em;

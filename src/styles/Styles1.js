@@ -4,8 +4,26 @@ import Offcanvas from 'react-bootstrap/Offcanvas';
 
 export const VentanaModal = styled.div`
         border: 1px solid red;
-        background-color: red;
 `
+export const DivModal = styled.div`
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        img{
+                width: 80%;
+                /* max-width: 30em; */
+                height: auto;
+                object-position: center center;
+                /* object-fit: cover; */
+        }
+        p{
+                
+                /* width: 13em; */
+                width: 300px;
+                margin: .5em 0;
+        }
+`
+
 export const Div7 = styled.section`
                 text-align: center;
                 height: 100px;
