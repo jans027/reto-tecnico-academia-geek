@@ -30,6 +30,8 @@ const NavBar = () => {
 
     const LogOut = () => {
         signOut(auth);
+        useSelector(state=> state.clear());
+        
     }
 
     // buscador
