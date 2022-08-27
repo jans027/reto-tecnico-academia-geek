@@ -31,7 +31,7 @@ const NavBar = () => {
     const LogOut = () => {
         signOut(auth);
         useSelector(state=> state.clear());
-        
+        window.location.reload(false);
     }
 
     // buscador
