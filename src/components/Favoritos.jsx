@@ -1,8 +1,16 @@
 import React from 'react'
+import { useNavigate } from 'react-router';
+import NavBar from './NavBar';
 
 const Favoritos = () => {
+
+    
     return (
-        <div>Favoritos</div>
+        <div>
+            <NavBar />
+            
+            Favoritos
+        </div>
     )
 }
 

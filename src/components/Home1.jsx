@@ -20,6 +20,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import Slide from '@mui/material/Slide';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import { Navigate, useNavigate } from 'react-router';
 
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -27,6 +28,8 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 
 export const Home1 = () => {
+
+  const navigate = useNavigate();
 
   const dispatch = useDispatch();
   const verPokemones = useSelector(store => store.pokemones.array)
@@ -62,7 +65,13 @@ export const Home1 = () => {
     setOpen(false);
     pokeData.pop(' ')
     return pokeData
+
   };
+
+  const botonFavoritos = (e) =>{
+    console.log('Boton Favoritos',e)
+    navigate("/Favoritos");
+  }
 
 
 
@@ -119,9 +128,10 @@ export const Home1 = () => {
               <DivModal>
 
                 <section>
-                  <Button sx={{
-                    color: '#e24f15',
-                  }} onClick={handleClose}>
+                  <Button 
+                  key={element.id} 
+                  sx={{color: '#e24f15'}} 
+                  onClick={(e) => botonFavoritos(element)}>
                     <FontAwesomeIcon icon={faHeart} />
                   </Button>
 

@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { auth } from '../firebase';
 import { reload, signOut } from "firebase/auth";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart, faMagnifyingGlass, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
+import { faHeart, faHouseChimney, faMagnifyingGlass, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 import { buscarPokemonesAction } from '../Redux/Actions/pokeAction';
 
@@ -17,12 +17,20 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Slide from '@mui/material/Slide';
 import { DivModal, VentanaModal } from '../styles/Styles1';
+import { useNavigate } from 'react-router';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
 });
 
 const NavBar = () => {
+
+    const navigate = useNavigate();
+
+
+    const home = () => {
+        navigate('/Home1')
+    }
 
     const uid = useSelector(state => state.login)
     const name = uid.name;
@@ -86,11 +94,17 @@ const NavBar = () => {
         // console.log('Busqueda', e.target.value)
     }
 
+    const botonFavoritos = (e) =>{
+        console.log('Boton Favoritos',e)
+        navigate("/Favoritos");
+    }
+
 
     return (
         <div className="col-12 fixed-top mt-3" >
             <div className="row">
                 <NavBarStyled>
+                    <button onClick={home}><FontAwesomeIcon icon={faHouseChimney} /></button>
                     <h6 Style="font-weight:400;"> Hi! {name}</h6>
 
                     <div>
@@ -125,9 +139,10 @@ const NavBar = () => {
                             <DivModal>
 
                                 <section>
-                                    <Button sx={{
-                                        color: '#e24f15',
-                                    }} onClick={handleClose}>
+                                    <Button
+                                        key={element.id}
+                                        sx={{ color: '#e24f15' }}
+                                        onClick={(e) => botonFavoritos(element)}>
                                         <FontAwesomeIcon icon={faHeart} />
                                     </Button>
 

@@ -12,6 +12,7 @@ import { PrivateRoutes } from "./PrivateRoutes";
 import { PublicRoutes } from "./PublicRoutes";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebase"
+import Favoritos from '../components/Favoritos';
 
 
 
@@ -41,6 +42,7 @@ export const AppRoutes = () => {
                 <Route path='/singup' element={<PublicRoutes isAutentication={auth1}> <SingUp /> </PublicRoutes>} />
                 <Route path="/home" element={<PublicRoutes isAutentication={auth1}><Home /></PublicRoutes>} />
 
+                <Route path='Favoritos' element={<PrivateRoutes isAutentication={auth1}> <Favoritos /> </PrivateRoutes>} />
                 <Route path='/' element={<PrivateRoutes isAutentication={auth1}> <Home /> </PrivateRoutes>} />
                 <Route path="/home1" element={<PrivateRoutes isAutentication={auth1}><Home1 /></PrivateRoutes>} />
                 <Route path="*" element={<Navigate to="/login" />} />

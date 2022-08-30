@@ -25,21 +25,6 @@ export function LogIn() {
 
   const dispatch = useDispatch();
 
-  // const { login, loginWithGoogle, resetPassword, singInWithFacebook } = useAuth();
-  // const [error, setError] = useState("");
-  // const navigate = useNavigate();
-
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   setError("");
-  //   try {
-  //     await login(user.email, user.password);
-  //     navigate("/home1");
-  //   } catch (error) {
-  //     setError(error.message);
-  //   }
-  // };
-
   const handleChange = ({ target: { value, name } }) =>
     setUser({ ...user, [name]: value });
 
@@ -53,36 +38,6 @@ export function LogIn() {
   const handleGoogle = () => {
     dispatch(loginGoogle())
   }
-
-
-  // const handleGoogleSignin = async () => {
-  //   try {
-  //     await loginWithGoogle();
-  //     navigate("/home1");
-  //   } catch (error) {
-  //     setError(error.message);
-  //   }
-  // };
-
-  // const handleFacebookSignin = async () => {
-  //   try {
-  //     await singInWithFacebook();
-  //     navigate("/home1");
-  //   } catch (error) {
-  //     setError(error.message);
-  //   }
-  // };
-
-  // const handleResetPassword = async (e) => {
-  //   e.preventDefault();
-  //   if (!user.email) return setError("Write an email to reset password");
-  //   try {
-  //     await resetPassword(user.email);
-  //     setError('We sent you an email. Check your inbox')
-  //   } catch (error) {
-  //     setError(error.message);
-  //   }
-  // };
 
   return (
 
