@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { auth } from '../firebase';
 import { reload, signOut } from "firebase/auth";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMagnifyingGlass, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
+import { faHeart, faMagnifyingGlass, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 import { buscarPokemonesAction } from '../Redux/Actions/pokeAction';
 
@@ -30,7 +30,7 @@ const NavBar = () => {
 
     const LogOut = () => {
         signOut(auth);
-        useSelector(state=> state.clear());
+        useSelector(state => state.clear());
         window.location.reload(false);
     }
 
@@ -123,7 +123,17 @@ const NavBar = () => {
                         >
 
                             <DivModal>
-                                <DialogTitle>{element.name}</DialogTitle>
+
+                                <section>
+                                    <Button sx={{
+                                        color: '#e24f15',
+                                    }} onClick={handleClose}>
+                                        <FontAwesomeIcon icon={faHeart} />
+                                    </Button>
+
+                                    <DialogTitle>{element.name}</DialogTitle>
+                                </section>
+
                                 <img
                                     src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${element.id}.svg`} alt={element.name} />
                                 <DialogContent>

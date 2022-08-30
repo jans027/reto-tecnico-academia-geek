@@ -9,9 +9,29 @@ export const DivModal = styled.div`
         display: flex;
         flex-direction: column;
         align-items: center;
+        section{
+                font-size: 2.5em;
+                min-height: 20px;
+                h2{
+                        font-size: 1em;
+                }
+                button{
+                        font-size: .8em;
+                        :hover{
+                                font-size: .9em;
+                                color: red;
+                        }
+                        path{
+                                border: 1px solid red;
+                                :hover{
+                                color: red;
+                                }
+                        }
+                }
+        }
         img{
-                width: 80%;
-                /* max-width: 30em; */
+                /* width: 80%; */
+                /* max-height: 200px; */
                 height: auto;
                 object-position: center center;
                 /* object-fit: cover; */

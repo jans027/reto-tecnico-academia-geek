@@ -18,6 +18,8 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Slide from '@mui/material/Slide';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
 
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -115,12 +117,22 @@ export const Home1 = () => {
             >
 
               <DivModal>
-                <DialogTitle>{element.name}</DialogTitle>
+
+                <section>
+                  <Button sx={{
+                    color: '#e24f15',
+                  }} onClick={handleClose}>
+                    <FontAwesomeIcon icon={faHeart} />
+                  </Button>
+
+                  <DialogTitle>{element.name}</DialogTitle>
+                </section>
+
                 <img
                   src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${element.id}.svg`} alt={element.name} />
                 <DialogContent>
                   <DialogContentText
-                    sx={{  color: '#f9fbe7', bgcolor: '#71c7dd2b', }}
+                    sx={{ color: '#f9fbe7', bgcolor: '#71c7dd2b', }}
                     id="alert-dialog-slide-description">
                     Weight : {element.weight}
                   </DialogContentText>
@@ -136,6 +148,7 @@ export const Home1 = () => {
                   </DialogContentText>
                 </DialogContent>
                 <DialogActions>
+
                   <Button sx={{
                     display: 'flex',
                     width: '20%',
