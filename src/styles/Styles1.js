@@ -44,6 +44,31 @@ export const DivModal = styled.div`
         }
 `
 
+export const DivFavoritos = styled.div`
+        margin-top: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        ul{
+                padding: 0;
+                li{
+                        border: 1px solid white;
+                }
+        }
+`
+export const BotonesCrud = styled.button`
+        border: none;
+        font-size: 1em;
+        path:active{
+                        color:blue;
+                }
+        svg{
+                font-size: 1.5em;
+                margin-left: .7em;
+                
+        }
+`
+
 export const Div7 = styled.section`
                 text-align: center;
                 height: 100px;
