@@ -11,8 +11,8 @@ import { BotonesCrud, DivFavoritos } from '../styles/Styles1';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPencil, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 // Firebase
-import {collection, getDocs} from '../firebaseConfig/firebase'
-import { db } from '../firebase';
+// import {collection, getDocs} from '../firebaseConfig/firebase'
+// import { db } from '../firebase';
 
 const Favoritos = () => {
 
@@ -33,20 +33,23 @@ const Favoritos = () => {
 
     // CRUD.................................
 
-    const [products, setProducts] = useState([]);
+    // const [products, setProducts] = useState([]);
 
-    const productsCollection = collection(db, "products")
+    // const productsCollection = collection(db, "products")
 
-    const getProducts = async () => {
-        const data = await getDocs(productsCollection)
-        console.log(data.docs)
-    }
+    // const getProducts = async () => {
+    //     const data = await getDocs(productsCollection)
+    //     console.log(data.docs)
+    // }
     // https://www.youtube.com/watch?v=LpC2EEIhu-g   minuto 15
+    const botonUpdate = () =>{
+        console.log('boton update')
+    }
 
+    const botonDelete = () => {
+        console.log('boton delete')
+    }
 
-    useEffect(()=>{
-        getProducts()
-    })
 
     return (
         <>
@@ -78,10 +81,10 @@ const Favoritos = () => {
                                         />
                                     </ListItemAvatar>
                                     <ListItemText id={labelId} primary={`Line item ${value + 1}`} />
-                                    <BotonesCrud>
+                                    <BotonesCrud onClick={botonUpdate}>
                                         <FontAwesomeIcon icon={faPencil} />
                                     </BotonesCrud>
-                                    <BotonesCrud>
+                                    <BotonesCrud onClick={botonDelete}>
                                         <FontAwesomeIcon icon={faTrashCan} />
                                     </BotonesCrud>
                                 </ListItemButton>

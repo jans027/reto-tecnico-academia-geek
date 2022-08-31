@@ -95,7 +95,7 @@ const NavBar = () => {
     }
 
     const botonFavoritos = (e) =>{
-        console.log('Boton Favoritos',e)
+        // console.log('Boton Favoritos',e)
         navigate("/Favoritos");
     }
 
