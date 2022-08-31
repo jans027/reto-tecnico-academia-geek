@@ -61,16 +61,17 @@ export const Home1 = () => {
   }
 
 
-  const handleClose = () => {
+  const handleClose = (e) => {
+    // e.preventDefault(); 
     setOpen(false);
     pokeData.pop(' ')
     return pokeData
-
+    
   };
 
   const botonFavoritos = (e) =>{
-    // console.log('Boton Favoritos',e)
-    navigate("/Favoritos");
+    console.log('Boton Favoritos',e)
+    // navigate("/Favoritos");
   }
 
 

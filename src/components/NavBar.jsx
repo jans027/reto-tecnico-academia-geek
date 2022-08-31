@@ -56,7 +56,7 @@ const NavBar = () => {
 
 
 
-    const buscarPoke = async () => {
+    const buscarPoke = async (e) => {
         // console.log('Hola',filtro)
         const [data] = filtro
         const url = data.url
@@ -66,7 +66,6 @@ const NavBar = () => {
             // console.log(result.data)
             // alert('Pokemon Encontrado')
             setOpen(true);
-
             setPokeBusqueda(state => {
                 state = [...state, result.data]
                 return state;
@@ -80,7 +79,7 @@ const NavBar = () => {
     // Modal
     const [open, setOpen] = React.useState(false);
 
-    const handleClose = () => {
+    const handleClose = (e) => {
         setOpen(false);
         pokeBusqueda.pop(' ')
         return pokeBusqueda
@@ -108,7 +107,7 @@ const NavBar = () => {
                     <h6 Style="font-weight:400;"> Hi! {name}</h6>
 
                     <div>
-                        <input value={busqueda} onChange={handleChange} type="search" name="" id="" />
+                        <input value={busqueda} onChange={handleChange} type="text" name="" id="" />
                         <button onClick={() => {
                             dispatch(buscarPokemonesAction())
                         }}>
