@@ -3,14 +3,7 @@ import { initializeApp } from "firebase/app";
 // import {getAuth} from "firebase/auth";
 import { getFirestore } from "@firebase/firestore";
 import {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  signOut,
-  onAuthStateChanged,
   GoogleAuthProvider,
-  FacebookAuthProvider,
-  signInWithPopup,
-  sendPasswordResetEmail,
   getAuth
 } from "firebase/auth";
 
