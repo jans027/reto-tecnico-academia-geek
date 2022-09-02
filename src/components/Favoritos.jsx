@@ -11,11 +11,16 @@ import { BotonesCrud, DivFavoritos } from '../styles/Styles1';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPencil, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 // Firebase
-// import {collection, getDocs} from '../firebaseConfig/firebase'
-// import { db } from '../firebase';
+import {collection, deleteDoc, doc, getDocs} from 'firebase/firestore'
+import { db } from '../firebase';
+import { useSelector } from 'react-redux';
+
 
 const Favoritos = () => {
 
+    const uid = useSelector(state => state.login)
+    const id = uid.id;
+    
 
     // const [checked, setChecked] = React.useState([1]);
     // const handleToggle = (value) => () => {
@@ -33,22 +38,34 @@ const Favoritos = () => {
 
     // CRUD.................................
 
-    // const [products, setProducts] = useState([]);
+    const [products, setProducts] = useState([]);
 
-    // const productsCollection = collection(db, "products")
+    const productsCollection = collection(db, `pokemonesFavoritos${id}`)
 
-    // const getProducts = async () => {
-    //     const data = await getDocs(productsCollection)
-    //     console.log(data.docs)
-    // }
-    // https://www.youtube.com/watch?v=LpC2EEIhu-g   minuto 15
+    const getProducts = async () => {
+        const data = await getDocs(productsCollection)
+        // console.log(data.docs)
+        setProducts(
+            data.docs.map((doc) => ({...doc.data(),id:doc.id}))
+        )
+        // console.log(products)
+    }
+
     const botonUpdate = () =>{
         console.log('boton update')
     }
 
-    const botonDelete = () => {
-        console.log('boton delete')
+    const botonDelete = async (id) => {
+        
+        const productDoc = doc(db, `pokemonesFavoritos${id}`, id)
+        console.log('Holaaaaa',productDoc.id )
+        await deleteDoc(productDoc)
+        return getProducts()
     }
+
+    useEffect(() => {
+        getProducts()
+    })
 
 
     return (
@@ -58,11 +75,12 @@ const Favoritos = () => {
             <DivFavoritos>
                 <List dense sx={{ width: '100%', maxWidth: 960, bgcolor: 'background.paper' }}>
 
-                    {[0, 1, 2, 3].map((value) => {
+                    {
+                    products.map((value) => {
                         const labelId = `checkbox-list-secondary-label-${value}`;
                         return (
                             <ListItem
-                                key={value}
+                                // key={value.id}
                                 // secondaryAction={
                                 //     <Checkbox
                                 //         edge="end"
@@ -71,20 +89,20 @@ const Favoritos = () => {
                                 //         inputProps={{ 'aria-labelledby': labelId }}
                                 //     />
                                 // }
-                                disablePadding
+                                // disablePadding
                             >
                                 <ListItemButton>
                                     <ListItemAvatar>
                                         <Avatar
-                                            alt={`Avatar n°${value + 1}`}
-                                            src={`/static/images/avatar/${value + 1}.jpg`}
+                                            alt={value.name}
+                                            src={value.imagen1}
                                         />
                                     </ListItemAvatar>
-                                    <ListItemText id={labelId} primary={`Line item ${value + 1}`} />
+                                    <ListItemText id={labelId} primary={value.name} />
                                     <BotonesCrud onClick={botonUpdate}>
                                         <FontAwesomeIcon icon={faPencil} />
                                     </BotonesCrud>
-                                    <BotonesCrud onClick={botonDelete}>
+                                    <BotonesCrud onClick={ () => {botonDelete(value.id)}}>
                                         <FontAwesomeIcon icon={faTrashCan} />
                                     </BotonesCrud>
                                 </ListItemButton>

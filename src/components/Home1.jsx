@@ -21,6 +21,10 @@ import Slide from '@mui/material/Slide';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { Navigate, useNavigate } from 'react-router';
+// Firestore
+import { addDoc, collection } from 'firebase/firestore';
+import { db } from '../firebase';
+import FormDialog from './AlertFavoritos';
 
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -28,6 +32,9 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 
 export const Home1 = () => {
+
+  const uid = useSelector(state => state.login)
+    const id = uid.id;
 
   const navigate = useNavigate();
 
@@ -66,12 +73,24 @@ export const Home1 = () => {
     setOpen(false);
     pokeData.pop(' ')
     return pokeData
-    
   };
 
-  const botonFavoritos = (e) =>{
+  // CRUD favoritos........................
+
+  const productsCollection = collection(db, `pokemonesFavoritos${id}`)
+
+  const botonFavoritos = async (e) =>{
     console.log('Boton Favoritos',e)
-    // navigate("/Favoritos");
+    const nombre = e.name
+    const imagen1 = e.sprites.front_shiny
+    
+    await addDoc(productsCollection, {name: nombre, imagen1: imagen1})
+    navigate("/Favoritos");
+    console.log(nombre, imagen1)
+  }
+
+  const botonPokeFavoritos = () =>{
+    navigate("/Favoritos");
   }
 
 
@@ -80,8 +99,11 @@ export const Home1 = () => {
     <div>
       <NavBar />
       <Pokemones >
+      <PokeBoton onClick={() => dispatch(botonPokeFavoritos())}>
+          Favoritos
+        </PokeBoton>
         <PokeBoton onClick={() => dispatch(obtenerPokemonesAction())}>
-          Get Pokemones
+          Pokemones
         </PokeBoton>
         <PokeBoton onClick={() => dispatch(siguientePokemonAction(25))}>
           Next
@@ -125,9 +147,8 @@ export const Home1 = () => {
               aria-describedby="alert-dialog-slide-description"
               Key={element.id}
             >
-
+              {/* Modal */}
               <DivModal>
-
                 <section>
                   <Button 
                   key={element.id} 

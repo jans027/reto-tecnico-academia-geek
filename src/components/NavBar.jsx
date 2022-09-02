@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { NavBarStyled } from '../styles/StylesGlobal';
 import { useDispatch, useSelector } from 'react-redux'
 import { auth } from '../firebase';
-import { reload, signOut } from "firebase/auth";
+import { signOut } from "firebase/auth";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faHouseChimney, faMagnifyingGlass, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
@@ -91,6 +91,7 @@ const NavBar = () => {
         e.preventDefault()
         setBusqueda(e.target.value.toLowerCase())
         // console.log('Busqueda', e.target.value)
+
     }
 
     const botonFavoritos = (e) =>{
