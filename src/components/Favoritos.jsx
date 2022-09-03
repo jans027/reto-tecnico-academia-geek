@@ -11,16 +11,30 @@ import { BotonesCrud, DivFavoritos } from '../styles/Styles1';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPencil, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 // Firebase
-import {collection, deleteDoc, doc, getDocs} from 'firebase/firestore'
+import { collection, deleteDoc, doc, getDocs, updateDoc } from 'firebase/firestore'
 import { db } from '../firebase';
 import { useSelector } from 'react-redux';
+// Ventana Dialogo
+import Button from '@mui/material/Button';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
 
 
 const Favoritos = () => {
 
+    // Ventana Dialogo
+    const [open, setOpen] = React.useState(false);
+    const [textoUpdate, setTextoUpdate] = useState("")
+    const [idUpdate, setIdUpdate] = useState()
+    // console.log(idUpdate)
+
+
     const uid = useSelector(state => state.login)
-    const id = uid.id;
-    
+    const idUser = uid.id;
+
 
     // const [checked, setChecked] = React.useState([1]);
     // const handleToggle = (value) => () => {
@@ -39,33 +53,64 @@ const Favoritos = () => {
     // CRUD.................................
 
     const [products, setProducts] = useState([]);
+    // console.log(products)
 
-    const productsCollection = collection(db, `pokemonesFavoritos${id}`)
+    const productsCollection = collection(db, idUser)
 
     const getProducts = async () => {
         const data = await getDocs(productsCollection)
         // console.log(data.docs)
         setProducts(
-            data.docs.map((doc) => ({...doc.data(),id:doc.id}))
+            data.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
         )
         // console.log(products)
     }
 
-    const botonUpdate = () =>{
-        console.log('boton update')
+    const botonUpdate = async () => {
+
+        const productDoc = doc(db, idUser, idUpdate)
+        // console.log(  productDoc   )
+        await updateDoc(productDoc, {
+            habilidad: textoUpdate
+        })
+        getProducts()
+        setOpen(false);
     }
 
-    const botonDelete = async (id) => {
-        
-        const productDoc = doc(db, `pokemonesFavoritos${id}`, id)
-        console.log('Holaaaaa',productDoc.id )
-        await deleteDoc(productDoc)
-        return getProducts()
+
+
+    const botonDelete = async (idpoke) => {
+        // console.log(idpoke)
+
+        const productDoc = doc(db, idUser, idpoke)
+        if (productDoc !== 0) {
+            // console.log(productDoc.path)
+            await deleteDoc(doc(db, idUser, idpoke))
+            getProducts()
+        }
     }
 
     useEffect(() => {
         getProducts()
-    })
+    }, [])
+
+    // Ventana Dialogo
+
+
+    const handleClose = () => {
+        setOpen(false);
+    };
+
+    const handleChange = async (e,) => {
+        e.preventDefault()
+        // console.log("ooooooeeeeee",e.target.value)
+        setTextoUpdate(e.target.value)
+    }
+
+    const handleClickOpen = (e) => {
+        setIdUpdate(e)
+        setOpen(true);
+    };
 
 
     return (
@@ -76,10 +121,10 @@ const Favoritos = () => {
                 <List dense sx={{ width: '100%', maxWidth: 960, bgcolor: 'background.paper' }}>
 
                     {
-                    products.map((value) => {
-                        const labelId = `checkbox-list-secondary-label-${value}`;
-                        return (
-                            <ListItem
+                        products.map((value) => {
+                            const labelId = `checkbox-list-secondary-label-${value}`;
+                            return (
+                                <ListItem
                                 // key={value.id}
                                 // secondaryAction={
                                 //     <Checkbox
@@ -90,27 +135,62 @@ const Favoritos = () => {
                                 //     />
                                 // }
                                 // disablePadding
-                            >
-                                <ListItemButton>
-                                    <ListItemAvatar>
-                                        <Avatar
-                                            alt={value.name}
-                                            src={value.imagen1}
-                                        />
-                                    </ListItemAvatar>
-                                    <ListItemText id={labelId} primary={value.name} />
-                                    <BotonesCrud onClick={botonUpdate}>
-                                        <FontAwesomeIcon icon={faPencil} />
-                                    </BotonesCrud>
-                                    <BotonesCrud onClick={ () => {botonDelete(value.id)}}>
-                                        <FontAwesomeIcon icon={faTrashCan} />
-                                    </BotonesCrud>
-                                </ListItemButton>
-                            </ListItem>
+                                >
+                                    <ListItemButton key={value.id}>
+                                        <ListItemAvatar>
+                                            <Avatar
+                                                alt={value.nombre}
+                                                src={value.imagen}
+                                            />
+                                        </ListItemAvatar>
+                                        <ListItemText id={labelId} primary={value.nombre} />
+                                        <ListItemText id={labelId} primary={value.habilidad} />
+                                        <BotonesCrud onClick={ () => { handleClickOpen(value.id) }} >
+                                            <FontAwesomeIcon icon={faPencil} />
+                                        </BotonesCrud>
+                                        <BotonesCrud onClick={() => { botonDelete(value.id) }}>
+                                            <FontAwesomeIcon icon={faTrashCan} />
+                                        </BotonesCrud>
+                                    </ListItemButton>
+                                </ListItem>
 
-                        );
-                    })}
+
+
+                            );
+                        })}
                 </List>
+
+                <Dialog
+                    open={open}
+                    onClose={handleClose}
+                    aria-labelledby="alert-dialog-title"
+                    aria-describedby="alert-dialog-description"
+                >
+                    <DialogTitle id="alert-dialog-title">
+                        {"Cambia la Habilidad de tu Pokemon"}
+                    </DialogTitle>
+                    <DialogContent>
+                        <DialogContentText id="alert-dialog-description">
+                            <input onChange={handleChange} type="text" />
+                        </DialogContentText>
+                    </DialogContent>
+                    <DialogActions>
+                        <Button
+                            sx={{
+                                display: 'flex',
+                                width: '20%',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                bgcolor: '#3f9db5',
+                                color: '#f9fbe7',
+                                borderRadius: 1,
+                            }}
+                            onClick={() => botonUpdate()}
+                            autoFocus>
+                            Cambiar
+                        </Button>
+                    </DialogActions>
+                </Dialog>
 
             </DivFavoritos>
         </>

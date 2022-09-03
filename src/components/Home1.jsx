@@ -24,7 +24,10 @@ import { Navigate, useNavigate } from 'react-router';
 // Firestore
 import { addDoc, collection } from 'firebase/firestore';
 import { db } from '../firebase';
-import FormDialog from './AlertFavoritos';
+// Popper
+
+
+
 
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -34,7 +37,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 export const Home1 = () => {
 
   const uid = useSelector(state => state.login)
-    const id = uid.id;
+  const idUser = uid.id;
 
   const navigate = useNavigate();
 
@@ -77,19 +80,21 @@ export const Home1 = () => {
 
   // CRUD favoritos........................
 
-  const productsCollection = collection(db, `pokemonesFavoritos${id}`)
+  const productsCollection = collection(db, idUser)
 
-  const botonFavoritos = async (e) =>{
-    console.log('Boton Favoritos',e)
-    const nombre = e.name
-    const imagen1 = e.sprites.front_shiny
+  const botonFavoritos = async (pokeData) => {
     
-    await addDoc(productsCollection, {name: nombre, imagen1: imagen1})
+    const nombre = pokeData.name
+    const imagen1 = pokeData.sprites.front_shiny
+    const habilidad = "Es muy fuerte"
+    
+
+    await addDoc(productsCollection , {nombre:nombre, imagen:imagen1, habilidad:habilidad})
     navigate("/Favoritos");
-    console.log(nombre, imagen1)
+    // console.log(nombre, imagen1, habilidad )
   }
 
-  const botonPokeFavoritos = () =>{
+  const botonPokeFavoritos = () => {
     navigate("/Favoritos");
   }
 
@@ -99,7 +104,7 @@ export const Home1 = () => {
     <div>
       <NavBar />
       <Pokemones >
-      <PokeBoton onClick={() => dispatch(botonPokeFavoritos())}>
+        <PokeBoton onClick={() => dispatch(botonPokeFavoritos())}>
           Favoritos
         </PokeBoton>
         <PokeBoton onClick={() => dispatch(obtenerPokemonesAction())}>
@@ -150,12 +155,16 @@ export const Home1 = () => {
               {/* Modal */}
               <DivModal>
                 <section>
-                  <Button 
-                  key={element.id} 
-                  sx={{color: '#e24f15'}} 
-                  onClick={(e) => botonFavoritos(element)}>
+                  <Button
+                    
+                    key={element.id}
+                    sx={{ color: '#e24f15' }}
+                    onClick={(e) => botonFavoritos(element)}>
                     <FontAwesomeIcon icon={faHeart} />
                   </Button>
+
+                        
+
 
                   <DialogTitle>{element.name}</DialogTitle>
                 </section>
@@ -178,6 +187,7 @@ export const Home1 = () => {
                     id="alert-dialog-slide-description">
                     Experience: {element.base_experience}
                   </DialogContentText>
+            
                 </DialogContent>
                 <DialogActions>
 
