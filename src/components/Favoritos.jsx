@@ -26,6 +26,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
+
 const Favoritos = () => {
 
 
@@ -98,6 +99,7 @@ const Favoritos = () => {
 
     useEffect(() => {
         getProducts()
+        
     }, [])
 
     // Ventana Dialogo
@@ -124,6 +126,8 @@ const Favoritos = () => {
             position: toast.POSITION.BOTTOM_CENTER
         });
     };
+
+    
 
     return (
         <>

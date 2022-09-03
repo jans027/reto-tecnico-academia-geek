@@ -105,7 +105,7 @@ export const Home1 = () => {
       <NavBar />
       <Pokemones >
 
-        <PokeBoton>
+        <PokeBoton>                    
           <button onClick={() => dispatch(botonPokeFavoritos())}>
             Favoritos
           </button>
@@ -136,7 +136,7 @@ export const Home1 = () => {
                   <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
                       {item.name}
-                    </Typography>
+                    </Typography>                   
                   </CardContent>
                 </CardActionArea>
               </Card>
@@ -166,9 +166,6 @@ export const Home1 = () => {
                     onClick={(e) => botonFavoritos(element)}>
                     <FontAwesomeIcon icon={faHeart} />
                   </Button>
-
-
-
 
                   <DialogTitle>{element.name}</DialogTitle>
                 </section>
@@ -200,7 +197,7 @@ export const Home1 = () => {
                     width: '20%',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    bgcolor: '#3f9db5',
+                    bgcolor: '#042275',
                     color: '#f9fbe7',
                     borderRadius: 1,
                   }} onClick={handleClose}>Close</Button>

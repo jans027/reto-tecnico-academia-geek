@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 export const NavBarStyled = styled.nav`
     background-color: #042275;
+    margin:0 +.5em;
     position: fixed;
     top: 0;
     font-size: 1.5em;
@@ -13,8 +14,8 @@ export const NavBarStyled = styled.nav`
     align-items: center;
     flex-wrap: wrap;
     padding: 0 .3em 0 1em;
-    -webkit-box-shadow: -8px 30px 42px -13px rgba(0,0,0,0.3); 
-    box-shadow: -8px 30px 42px -13px rgba(0,0,0,0.3);
+    -webkit-box-shadow: 0px 2px 29px -1px rgba(0,0,0,0.59); 
+    box-shadow: 0px 2px 29px -1px rgba(0,0,0,0.59);
     a{
         cursor: pointer;
         background-color: #042275;

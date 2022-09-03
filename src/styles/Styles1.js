@@ -21,6 +21,9 @@ export const DivModal = styled.div`
                                 font-size: .9em;
                                 color: red;
                         }
+                        :active{
+                                color: red;
+                        }
                         path{
                                 border: 1px solid red;
                                 :hover{
@@ -30,16 +33,16 @@ export const DivModal = styled.div`
                 }
         }
         img{
-                /* width: 80%; */
-                /* max-height: 200px; */
+                /* width: 60%; */
+                max-height: 200px;
                 height: auto;
                 object-position: center center;
                 /* object-fit: cover; */
         }
         p{
-                
+                padding: none;
                 /* width: 13em; */
-                width: 300px;
+                width: 250px;
                 margin: .5em 0;
         }
 `
@@ -504,14 +507,16 @@ export const Pokemones = styled.div`
 
 export const PokeBoton = styled.div`
         margin-bottom: 2em;
+        
         button{
-                border: 1px solid white;
+                border: none;
                 padding: .5em 2em;
                 border-radius: 1.5em;
                 font-size: .8em;
+                background-color: #042275;
                 /* margin: 0 1em; */
                 :hover{
-                        background-color: steelblue;
+                        background-color: #023e8a;
                 }
         }
 `
@@ -524,10 +529,21 @@ export const CardPokemon = styled.div`
         min-width: 300px;
         justify-content:center;
         gap: 1.5em;
+        
         img{
                 height: 100%;
                 object-fit: cover;
                 object-position: center center;
+        }
+        button{
+                border: 2px solid #176aadd0;
+                div{
+                        
+                        div{
+                                background-color: #042275;
+                                border-radius: 1em;
+                        }
+                }
         }
 `
 export const AlertToasty = styled.div`

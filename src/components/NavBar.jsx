@@ -22,6 +22,7 @@ import { addDoc, collection } from 'firebase/firestore';
 import { db } from '../firebase';
 import { Link } from 'react-router-dom';
 
+
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
 });
@@ -119,8 +120,9 @@ const NavBar = () => {
         <div className="col-12 fixed-top mt-3" >
             <div className="row">
                 <NavBarStyled>
+
                     <Link to="/Home" >
-                        <img src="https://i.ibb.co/7GF1fZ9/logo.png" alt="logo" border="0"/>
+                        <img src="https://i.ibb.co/7GF1fZ9/logo.png" alt="logo" border="0" />
                     </Link>
 
 
