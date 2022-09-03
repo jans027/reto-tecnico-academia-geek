@@ -21,9 +21,14 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+// Alert Toastify
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const Favoritos = () => {
+
+
 
     // Ventana Dialogo
     const [open, setOpen] = React.useState(false);
@@ -85,6 +90,7 @@ const Favoritos = () => {
         const productDoc = doc(db, idUser, idpoke)
         if (productDoc !== 0) {
             // console.log(productDoc.path)
+            
             await deleteDoc(doc(db, idUser, idpoke))
             getProducts()
         }
@@ -111,7 +117,13 @@ const Favoritos = () => {
         setIdUpdate(e)
         setOpen(true);
     };
-
+    
+    // Alert Toastify..............................
+    const showToastMessage = () => {
+        toast.warning('Warning Notification !', {
+            position: toast.POSITION.BOTTOM_CENTER
+        });
+    };
 
     return (
         <>
@@ -124,18 +136,7 @@ const Favoritos = () => {
                         products.map((value) => {
                             const labelId = `checkbox-list-secondary-label-${value}`;
                             return (
-                                <ListItem
-                                // key={value.id}
-                                // secondaryAction={
-                                //     <Checkbox
-                                //         edge="end"
-                                //         onChange={handleToggle(value)}
-                                //         checked={checked.indexOf(value) !== -1}
-                                //         inputProps={{ 'aria-labelledby': labelId }}
-                                //     />
-                                // }
-                                // disablePadding
-                                >
+                                <ListItem>
                                     <ListItemButton key={value.id}>
                                         <ListItemAvatar>
                                             <Avatar
@@ -145,17 +146,15 @@ const Favoritos = () => {
                                         </ListItemAvatar>
                                         <ListItemText id={labelId} primary={value.nombre} />
                                         <ListItemText id={labelId} primary={value.habilidad} />
-                                        <BotonesCrud onClick={ () => { handleClickOpen(value.id) }} >
+                                        <BotonesCrud onClick={() => { handleClickOpen(value.id) }} >
                                             <FontAwesomeIcon icon={faPencil} />
                                         </BotonesCrud>
                                         <BotonesCrud onClick={() => { botonDelete(value.id) }}>
-                                            <FontAwesomeIcon icon={faTrashCan} />
+                                            <FontAwesomeIcon onClick={showToastMessage} icon={faTrashCan} />
+                                            <ToastContainer />
                                         </BotonesCrud>
                                     </ListItemButton>
                                 </ListItem>
-
-
-
                             );
                         })}
                 </List>
@@ -198,3 +197,4 @@ const Favoritos = () => {
     );
 }
 export default Favoritos
+

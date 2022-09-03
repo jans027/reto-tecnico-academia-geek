@@ -496,17 +496,23 @@ export const DivNav2 = styled.nav`
 `
 
 export const Pokemones = styled.div`
-        margin-top: 100px;
+        width: 100%;
+        margin-top: 140px;
+        
         text-align: center;
 `
 
-export const PokeBoton = styled.button`
-        border: 1px solid white;
-        padding: .5em 2em;
-        border-radius: 1.5em;
-        margin: 0 1em;
-        :hover{
-                background-color: steelblue;
+export const PokeBoton = styled.div`
+        margin-bottom: 2em;
+        button{
+                border: 1px solid white;
+                padding: .5em 2em;
+                border-radius: 1.5em;
+                font-size: .8em;
+                /* margin: 0 1em; */
+                :hover{
+                        background-color: steelblue;
+                }
         }
 `
 

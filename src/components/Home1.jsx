@@ -83,14 +83,14 @@ export const Home1 = () => {
   const productsCollection = collection(db, idUser)
 
   const botonFavoritos = async (pokeData) => {
-    
+
     const nombre = pokeData.name
     const imagen1 = pokeData.sprites.front_shiny
     const habilidad = "Es muy fuerte"
-    
 
-    await addDoc(productsCollection , {nombre:nombre, imagen:imagen1, habilidad:habilidad})
-    navigate("/Favoritos");
+
+    await addDoc(productsCollection, { nombre: nombre, imagen: imagen1, habilidad: habilidad })
+    navigate("/home");
     // console.log(nombre, imagen1, habilidad )
   }
 
@@ -104,15 +104,19 @@ export const Home1 = () => {
     <div>
       <NavBar />
       <Pokemones >
-        <PokeBoton onClick={() => dispatch(botonPokeFavoritos())}>
-          Favoritos
+
+        <PokeBoton>
+          <button onClick={() => dispatch(botonPokeFavoritos())}>
+            Favoritos
+          </button>
+          <button onClick={() => dispatch(obtenerPokemonesAction())}>
+            Pokemones
+          </button>
+          <button onClick={() => dispatch(siguientePokemonAction(25))}>
+            Next
+          </button>
         </PokeBoton>
-        <PokeBoton onClick={() => dispatch(obtenerPokemonesAction())}>
-          Pokemones
-        </PokeBoton>
-        <PokeBoton onClick={() => dispatch(siguientePokemonAction(25))}>
-          Next
-        </PokeBoton>
+
         <CardPokemon>
           {
             verPokemones.map((item, i) => (
@@ -156,14 +160,14 @@ export const Home1 = () => {
               <DivModal>
                 <section>
                   <Button
-                    
+
                     key={element.id}
                     sx={{ color: '#e24f15' }}
                     onClick={(e) => botonFavoritos(element)}>
                     <FontAwesomeIcon icon={faHeart} />
                   </Button>
 
-                        
+
 
 
                   <DialogTitle>{element.name}</DialogTitle>
@@ -187,7 +191,7 @@ export const Home1 = () => {
                     id="alert-dialog-slide-description">
                     Experience: {element.base_experience}
                   </DialogContentText>
-            
+
                 </DialogContent>
                 <DialogActions>
 
