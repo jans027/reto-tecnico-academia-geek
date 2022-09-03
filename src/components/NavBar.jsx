@@ -7,7 +7,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faHouseChimney, faMagnifyingGlass, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 import { buscarPokemonesAction } from '../Redux/Actions/pokeAction';
-
 // Modal
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
@@ -18,12 +17,19 @@ import DialogTitle from '@mui/material/DialogTitle';
 import Slide from '@mui/material/Slide';
 import { DivModal, VentanaModal } from '../styles/Styles1';
 import { useNavigate } from 'react-router';
+// Firestore
+import { addDoc, collection } from 'firebase/firestore';
+import { db } from '../firebase';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
 });
 
 const NavBar = () => {
+
+    const uid = useSelector(state => state.login)
+    const idUser = uid.id;
+    const name = uid.name
 
     const navigate = useNavigate();
 
@@ -32,9 +38,6 @@ const NavBar = () => {
         navigate('/Home1')
     }
 
-    const uid = useSelector(state => state.login)
-    const name = uid.name;
-    // console.log(name)
 
     const LogOut = () => {
         signOut(auth);
@@ -94,8 +97,23 @@ const NavBar = () => {
 
     }
 
-    const botonFavoritos = (e) =>{
-        // console.log('Boton Favoritos',e)
+    // CRUD favoritos........................
+
+    const productsCollection = collection(db, idUser)
+
+    const botonFavoritos = async (pokeData) => {
+
+        const nombre = pokeData.name
+        const imagen1 = pokeData.sprites.front_shiny
+        const habilidad = "Es muy fuerte"
+
+
+        await addDoc(productsCollection, { nombre: nombre, imagen: imagen1, habilidad: habilidad })
+        navigate("/home");
+        // console.log(nombre, imagen1, habilidad )
+    }
+
+    const botonPokeFavoritos = () => {
         navigate("/Favoritos");
     }
 

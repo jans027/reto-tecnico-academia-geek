@@ -7,7 +7,7 @@ import ListItemAvatar from '@mui/material/ListItemAvatar';
 // import Checkbox from '@mui/material/Checkbox';
 import Avatar from '@mui/material/Avatar';
 import NavBar from './NavBar';
-import { BotonesCrud, DivFavoritos } from '../styles/Styles1';
+import { AlertToasty, BotonesCrud, DivFavoritos } from '../styles/Styles1';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPencil, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 // Firebase
@@ -90,7 +90,7 @@ const Favoritos = () => {
         const productDoc = doc(db, idUser, idpoke)
         if (productDoc !== 0) {
             // console.log(productDoc.path)
-            
+
             await deleteDoc(doc(db, idUser, idpoke))
             getProducts()
         }
@@ -117,7 +117,7 @@ const Favoritos = () => {
         setIdUpdate(e)
         setOpen(true);
     };
-    
+
     // Alert Toastify..............................
     const showToastMessage = () => {
         toast.warning('Warning Notification !', {
@@ -151,7 +151,9 @@ const Favoritos = () => {
                                         </BotonesCrud>
                                         <BotonesCrud onClick={() => { botonDelete(value.id) }}>
                                             <FontAwesomeIcon onClick={showToastMessage} icon={faTrashCan} />
-                                            <ToastContainer />
+                                            <AlertToasty>
+                                                <ToastContainer />
+                                            </AlertToasty>
                                         </BotonesCrud>
                                     </ListItemButton>
                                 </ListItem>

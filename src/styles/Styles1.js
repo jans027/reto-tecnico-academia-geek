@@ -530,6 +530,8 @@ export const CardPokemon = styled.div`
                 object-position: center center;
         }
 `
-
+export const AlertToasty = styled.div`
+        background-color: red;
+`
 
 
