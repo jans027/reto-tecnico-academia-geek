@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { auth } from '../firebase';
 import { signOut } from "firebase/auth";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart, faHouseChimney, faMagnifyingGlass, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
+import { faHeart, faMagnifyingGlass, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 import { buscarPokemonesAction } from '../Redux/Actions/pokeAction';
 // Modal
@@ -20,6 +20,7 @@ import { useNavigate } from 'react-router';
 // Firestore
 import { addDoc, collection } from 'firebase/firestore';
 import { db } from '../firebase';
+import { Link } from 'react-router-dom';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
@@ -33,10 +34,6 @@ const NavBar = () => {
 
     const navigate = useNavigate();
 
-
-    const home = () => {
-        navigate('/Home1')
-    }
 
 
     const LogOut = () => {
@@ -122,8 +119,10 @@ const NavBar = () => {
         <div className="col-12 fixed-top mt-3" >
             <div className="row">
                 <NavBarStyled>
-                    <button onClick={home}><FontAwesomeIcon icon={faHouseChimney} /></button>
-                    <h6 Style="font-weight:400;"> Hi! {name}</h6>
+                    <Link to="/Home" >
+                        <img src="https://i.ibb.co/7GF1fZ9/logo.png" alt="logo" border="0"/>
+                    </Link>
+
 
                     <div>
                         <input value={busqueda} onChange={handleChange} type="text" name="" id="" />
@@ -135,10 +134,12 @@ const NavBar = () => {
                             }} icon={faMagnifyingGlass} />
                         </button>
                     </div>
-
-                    <button onClick={LogOut}>
-                        <FontAwesomeIcon icon={faRightFromBracket} />
-                    </button>
+                    <div>
+                        <h6 Style="font-weight:400;"> Hi! {name}</h6>
+                        <button onClick={LogOut}>
+                            <FontAwesomeIcon icon={faRightFromBracket} />
+                        </button>
+                    </div>
                 </NavBarStyled>
             </div>
 

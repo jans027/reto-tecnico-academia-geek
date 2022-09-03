@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 
 export const NavBarStyled = styled.nav`
+    background-color: #042275;
     position: fixed;
     top: 0;
     font-size: 1.5em;
@@ -14,14 +15,49 @@ export const NavBarStyled = styled.nav`
     padding: 0 .3em 0 1em;
     -webkit-box-shadow: -8px 30px 42px -13px rgba(0,0,0,0.3); 
     box-shadow: -8px 30px 42px -13px rgba(0,0,0,0.3);
-    h6{
-        font-size: .8em;
+    a{
+        cursor: pointer;
+        background-color: #042275;
+        :hover{
+            transform: scale(1.2);
+        }
+        /* width: 1em; */
+        height: 2.8em;
+        img{
+            background-color: #042275;
+            height: 90%;
+            object-fit: cover;
+            object-position: center center;
+        }
     }
+    div{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #042275;
+        h6{
+            font-size: .8em;
+            margin-right: .5em;
+            background-color: #042275;
+        }
+        svg{
+            background-color: #042275;
+        }
+        path{
+            :hover{
+            transform: scale(1.2);
+            background-color: #042275;
+            }
+        }
+
+    }
+    
     button{
         border: none;
+        background-color: #042275;
     }
     input{
-
+        background-color: #042275;
         max-width: 200px;
         border: 1px solid white;
         height: 1.3em;

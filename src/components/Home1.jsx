@@ -20,7 +20,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import Slide from '@mui/material/Slide';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
-import { Navigate, useNavigate } from 'react-router';
+import { useNavigate } from 'react-router';
 // Firestore
 import { addDoc, collection } from 'firebase/firestore';
 import { db } from '../firebase';
