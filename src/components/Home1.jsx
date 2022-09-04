@@ -92,7 +92,7 @@ export const Home1 = () => {
 
 
     await addDoc(productsCollection, { nombre: nombre, imagen: imagen1, habilidad: habilidad })
-    
+
     // console.log(nombre, imagen1, habilidad )
   }
 
@@ -107,9 +107,10 @@ export const Home1 = () => {
       <NavBar />
       <Pokemones >
 
-        <PokeBoton>                    
+        <PokeBoton>
           <button onClick={() => dispatch(botonPokeFavoritos())}>
-            Favoritos
+            <FontAwesomeIcon icon={faHeart} />
+            {/* Favoritos */}
           </button>
           <button onClick={() => dispatch(obtenerPokemonesAction())}>
             Pokemones
@@ -138,7 +139,7 @@ export const Home1 = () => {
                   <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
                       {item.name}
-                    </Typography>                   
+                    </Typography>
                   </CardContent>
                 </CardActionArea>
               </Card>
@@ -162,7 +163,6 @@ export const Home1 = () => {
               <DivModal>
                 <section>
                   <Button
-
                     key={element.id}
                     sx={{ color: '#e24f15' }}
                     onClick={(e) => botonFavoritos(element)}>

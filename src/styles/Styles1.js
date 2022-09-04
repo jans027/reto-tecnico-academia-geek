@@ -520,6 +520,9 @@ export const Pokemones = styled.div`
 
 export const PokeBoton = styled.div`
         margin-bottom: 2em;
+        path{
+                color: #ffe500;
+        }
         
         button{
                 border: none;
