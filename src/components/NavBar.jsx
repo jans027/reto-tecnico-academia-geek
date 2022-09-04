@@ -114,9 +114,9 @@ const NavBar = () => {
         // console.log(nombre, imagen1, habilidad )
     }
 
-    const botonPokeFavoritos = () => {
-        navigate("/Favoritos");
-    }
+    // const botonPokeFavoritos = () => {
+    //     navigate("/Favoritos");
+    // }
 
 
     return (

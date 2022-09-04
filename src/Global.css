@@ -3,6 +3,21 @@
   color: #fff;
   /* background: #176aad; */
 }
+.RedesBotones1{
+  display: flex;
+  justify-content: center;
+
+}
+.RedesBotones1 .col-6 {
+  width: 8em;
+}
+.botonRedes{
+  background-color: transparent;
+
+}
+.container36{
+  margin-bottom: 2.5em;
+}
 .colored-toast.swal2-icon-success {
   background-color: #ffe500 !important;
 }

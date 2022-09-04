@@ -62,13 +62,13 @@ export const LoginWithEmail = (email, password) => {
     return (dispatch) => {
 
         signInWithEmailAndPassword(auth, email, password)
-            .then(({ user }) => { dispatch(loginSync(user.uid, user.displayName)) })
+            .then( async({ user }) => { 
+                await dispatch(loginSync(user.uid, user.displayName)) })
             .catch(() => { console.log("Usuario o contraseña invalida") })
     }
 }
 
 const loginSync = (id, displayName) => {
-
     return {
         type: userTypes.login,
         payload: { id, displayName }

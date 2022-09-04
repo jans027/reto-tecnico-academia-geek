@@ -6,7 +6,6 @@ import {
   TextIntro, 
   Singupfrm, 
   Form, 
-  Label, 
   Input1, 
   InputContainer 
 } from '../styles/PagIntro'
@@ -31,8 +30,8 @@ export function SingUp() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(registerWithEmail(user.email, user.password, user.name));
     navigate("/LogIn");
+    dispatch(registerWithEmail(user.email, user.password, user.name));
     reset();
   }
 
@@ -105,7 +104,7 @@ export function SingUp() {
 
             <div className="col-12">
               <div className="row">
-                <div className="col-12" Style="margin-top:20px; font-weight:400; font-size:14px; text-align:center">
+                <div className="col-12 container36" Style="margin-top:20px; font-weight:400; font-size:14px; text-align:center">
                   Already have an Account?
                   <Link to="/login" Style="color:#2BE7E8; margin-left:20px;">
                     Login

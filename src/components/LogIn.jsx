@@ -1,7 +1,7 @@
 
 import "../Global.css"
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 // import { useAuth } from "../context/AuthContext";
 // import { Alert } from "./Pag3";
 import { TextIntro, Singupfrm, Form, Label, Input1, InputContainer, ButtonIntro1 } from '../styles/PagIntro'
@@ -13,10 +13,11 @@ import { loginGoogle, LoginWithEmail } from "../Redux/Actions/userAction";
 import { useDispatch } from "react-redux";
 // import { NavBar2 } from "./NavBar2";
 import { DivCard2, DivPadre2 } from "../styles/Styles1";
+import Swal from "sweetalert2";
 
 export function LogIn() {
 
-
+  const navigate = useNavigate();
 
   const [user, setUser] = useState({
     email: "",
@@ -29,10 +30,31 @@ export function LogIn() {
     setUser({ ...user, [name]: value });
 
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    dispatch(LoginWithEmail(user.email, user.password, user.uid))
-
+    // Sweat alert........................................................
+    const handleSubmit = (e) => {
+      e.preventDefault();  
+      if (user.email === "" || user.password === "") {
+  
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Todos los Campos son Obligatorios!',
+        })
+      } else {
+        Swal.fire({
+          title:'Good job!',
+          text:'Gracias por Regresar!',
+          icon:'success',
+          
+        }).then((result) => {
+          if (result.isConfirmed) {
+            dispatch(LoginWithEmail(user.email, user.password));
+            // alert('ok')
+            navigate("/Home1");// cambiar ruta...................................
+          } 
+        })
+      }
+      e.target.reset();//metodo que resetea campos ................................
   }
 
   const handleGoogle = () => {
@@ -103,14 +125,14 @@ export function LogIn() {
 
         <div className="col-12">
           <div className="row" Style="text-align:center;">
-            <div className="container d-flex">
+            <div className="container d-flex RedesBotones1">
               <div className="col-6" Style="">
-                <button Style="border:none">
+                <button className="botonRedes" Style="border:none">
                   <img Style="height:60px;" src={logofb} alt="" />
                 </button>
               </div>
               <div className="col-6" Style="">
-                <button onClick={handleGoogle} Style="border:none;">
+                <button className="botonRedes" onClick={handleGoogle} Style="border:none;">
                   <img Style="height:60px; width:60px;" src={logogoogle} alt="" />
                 </button>
               </div>
@@ -119,8 +141,8 @@ export function LogIn() {
         </div>
 
 
-        <div className="col-12">
-          <div className="container" Style="margin-top:40px; font-weight:400; font-size:14px; text-align:center;">
+        <div className="col-12 ">
+          <div className="container container36" Style="margin-top:40px; font-weight:400; font-size:14px; text-align:center;">
             Dont have account?
             <Link to="/singup" Style="color:#2BE7E8; margin-left:10px;">
               Sing up
