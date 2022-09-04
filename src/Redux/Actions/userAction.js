@@ -1,15 +1,15 @@
-import { typesUser, userTypes, typesUser1 } from "../Types/userTypes";
+import { userTypes} from "../Types/userTypes";
 
-import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, signInWithPopup, updateProfile, GoogleAuthProvider } from "firebase/auth";
+import { createUserWithEmailAndPassword,  signInWithEmailAndPassword, signInWithPopup, updateProfile, GoogleAuthProvider } from "firebase/auth";
 // import { google } from "../../Firebase/firebaseConfig";
 import { googleProvider } from '../../firebase';
 import { auth } from "../../firebase"
-import { ViewAgendaOutlined } from "@mui/icons-material";
-import { Unstable_Grid2 } from "@mui/material";
-import { db } from '../../firebase'
-import { addDoc, collection, deleteDoc, doc, getDocs, query, setDoc, updateDoc, where } from 'firebase/firestore'
-import { useSelector } from 'react-redux'
-import { faArrowUpWideShort } from "@fortawesome/free-solid-svg-icons";
+// import { ViewAgendaOutlined } from "@mui/icons-material";
+// import { Unstable_Grid2 } from "@mui/material";
+// import { db } from '../../firebase'
+// import { addDoc, collection, deleteDoc, doc, getDocs, query, setDoc, updateDoc, where } from 'firebase/firestore'
+// import { useSelector } from 'react-redux'
+// import { faArrowUpWideShort } from "@fortawesome/free-solid-svg-icons";
 
 // Inicio y registro con  Google
 export const loginGoogle = () => {
