@@ -7,7 +7,7 @@ import ListItemAvatar from '@mui/material/ListItemAvatar';
 // import Checkbox from '@mui/material/Checkbox';
 import Avatar from '@mui/material/Avatar';
 import NavBar from './NavBar';
-import { AlertToasty, BotonesCrud, DivFavoritos } from '../styles/Styles1';
+import { AlertToasty, BotonesCrud, DivFavoritos, ProgressCircle } from '../styles/Styles1';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPencil, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 // Firebase
@@ -22,14 +22,19 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 // Alert Toastify
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+// Progress
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
+import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router';
 
 
 
 const Favoritos = () => {
 
-
+    const navigate = useNavigate();
 
     // Ventana Dialogo
     const [open, setOpen] = React.useState(false);
@@ -42,20 +47,6 @@ const Favoritos = () => {
     const idUser = uid.id;
 
 
-    // const [checked, setChecked] = React.useState([1]);
-    // const handleToggle = (value) => () => {
-    //     const currentIndex = checked.indexOf(value);
-    //     const newChecked = [...checked];
-
-    //     if (currentIndex === -1) {
-    //         newChecked.push(value);
-    //     } else {
-    //         newChecked.splice(currentIndex, 1);
-    //     }
-
-    //     setChecked(newChecked);
-    // };
-
     // CRUD.................................
 
     const [products, setProducts] = useState([]);
@@ -64,11 +55,29 @@ const Favoritos = () => {
     const productsCollection = collection(db, idUser)
 
     const getProducts = async () => {
-        const data = await getDocs(productsCollection)
-        // console.log(data.docs)
-        setProducts(
-            data.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
-        )
+        try {
+
+            const data = await getDocs(productsCollection)
+            // console.log(data.docs.length)
+            if (data.docs.length === 0) {
+                // alert("No Tienes Pokemones")
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'No Tienes Pokemones!',
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        navigate('/Home1')
+                    }
+                })
+            }
+            setProducts(
+                data.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
+            )
+        } catch (error) {
+        }
+
+
         // console.log(products)
     }
 
@@ -93,14 +102,21 @@ const Favoritos = () => {
             // console.log(productDoc.path)
 
             await deleteDoc(doc(db, idUser, idpoke))
+            await Toast.fire({
+                icon: 'success',
+                title: 'Borrando Pokemon...'
+            })
             getProducts()
+        } else {
+            alert('No tienes pokemones')
         }
     }
 
     useEffect(() => {
         getProducts()
-        
     }, [])
+
+
 
     // Ventana Dialogo
 
@@ -120,23 +136,28 @@ const Favoritos = () => {
         setOpen(true);
     };
 
-    // Alert Toastify..............................
-    const showToastMessage = () => {
-        toast.warning('Warning Notification !', {
-            position: toast.POSITION.BOTTOM_CENTER
-        });
-    };
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-right',
+        iconColor: 'white',
+        customClass: {
+            popup: 'colored-toast'
+        },
+        showConfirmButton: false,
+        timer: 1000,
+        timerProgressBar: true
+    })
 
-    
+
 
     return (
-        <>
+        <section>
             <NavBar />
 
             <DivFavoritos>
                 <List dense sx={{ width: '100%', maxWidth: 960, bgcolor: 'background.paper' }}>
 
-                    {
+                    {products.length > 0 ?
                         products.map((value) => {
                             const labelId = `checkbox-list-secondary-label-${value}`;
                             return (
@@ -154,7 +175,7 @@ const Favoritos = () => {
                                             <FontAwesomeIcon icon={faPencil} />
                                         </BotonesCrud>
                                         <BotonesCrud onClick={() => { botonDelete(value.id) }}>
-                                            <FontAwesomeIcon onClick={showToastMessage} icon={faTrashCan} />
+                                            <FontAwesomeIcon icon={faTrashCan} />
                                             <AlertToasty>
                                                 <ToastContainer />
                                             </AlertToasty>
@@ -162,7 +183,16 @@ const Favoritos = () => {
                                     </ListItemButton>
                                 </ListItem>
                             );
-                        })}
+                        })
+
+                        :
+                        <ProgressCircle>
+                            <p>Loading...</p>
+                            <Box sx={{ display: 'flex' }}>
+                                <CircularProgress />
+                            </Box>
+                        </ProgressCircle>
+                    }
                 </List>
 
                 <Dialog
@@ -170,13 +200,14 @@ const Favoritos = () => {
                     onClose={handleClose}
                     aria-labelledby="alert-dialog-title"
                     aria-describedby="alert-dialog-description"
+                    
                 >
                     <DialogTitle id="alert-dialog-title">
                         {"Cambia la Habilidad de tu Pokemon"}
                     </DialogTitle>
                     <DialogContent>
                         <DialogContentText id="alert-dialog-description">
-                            <input onChange={handleChange} type="text" />
+                            <input className='inputUpdate' onChange={handleChange} type="text" />
                         </DialogContentText>
                     </DialogContent>
                     <DialogActions>
@@ -198,7 +229,8 @@ const Favoritos = () => {
                 </Dialog>
 
             </DivFavoritos>
-        </>
+
+        </section>
 
     );
 }

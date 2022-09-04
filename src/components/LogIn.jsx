@@ -40,8 +40,8 @@ export function LogIn() {
   }
 
   return (
-
-    <div className="col-12" >
+    <section>
+      <div className="col-12" >
       <div className="row">
 
 
@@ -72,13 +72,13 @@ export function LogIn() {
             <Singupfrm>
               <Form onSubmit={handleSubmit}>
                 <InputContainer className="mb-3 mt-3">
-                  <Label htmlFor="email">Email</Label>
-                  <Input1 type="email" name="email" onChange={handleChange} placeholder="youremail@gmail.com" />
+                  {/* <Label htmlFor="email">Email</Label> */}
+                  <Input1 type="email" name="email" onChange={handleChange} placeholder="Email" />
                 </InputContainer>
                 <InputContainer className="mb-2">
-                  <Label htmlFor="password">Password</Label>
+                  {/* <Label htmlFor="password">Password</Label> */}
                   <Input1 type="password" name="password" onChange={handleChange}
-                    placeholder="*********" />
+                    placeholder="Password" />
                 </InputContainer>
 
                 <div className="col-12">
@@ -130,7 +130,6 @@ export function LogIn() {
 
       </div>
     </div>
-
-
+    </section>
   );
 }

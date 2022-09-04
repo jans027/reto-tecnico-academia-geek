@@ -64,9 +64,10 @@ const NavBar = () => {
         // console.log(url)
         try {
             const result = await axios.get(url)
+            setOpen(true);
             // console.log(result.data)
             // alert('Pokemon Encontrado')
-            setOpen(true);
+            
             setPokeBusqueda(state => {
                 state = [...state, result.data]
                 return state;
@@ -101,13 +102,15 @@ const NavBar = () => {
 
     const botonFavoritos = async (pokeData) => {
 
+        navigate("/home");
+
         const nombre = pokeData.name
         const imagen1 = pokeData.sprites.front_shiny
         const habilidad = "Es muy fuerte"
 
 
         await addDoc(productsCollection, { nombre: nombre, imagen: imagen1, habilidad: habilidad })
-        navigate("/home");
+        
         // console.log(nombre, imagen1, habilidad )
     }
 

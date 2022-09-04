@@ -9,9 +9,11 @@ export const DivModal = styled.div`
         display: flex;
         flex-direction: column;
         align-items: center;
+        background: #0077b6;
         section{
                 font-size: 2.5em;
                 min-height: 20px;
+                background: #0077b6;
                 h2{
                         font-size: 1em;
                 }
@@ -27,7 +29,7 @@ export const DivModal = styled.div`
                         path{
                                 border: 1px solid red;
                                 :hover{
-                                color: red;
+                                color: #ffe500;
                                 }
                         }
                 }
@@ -48,12 +50,14 @@ export const DivModal = styled.div`
 `
 
 export const DivFavoritos = styled.div`
-        margin-top: 100px;
+        margin-top: 2em;
         display: flex;
         justify-content: center;
         align-items: center;
+        width: 800px;
         ul{
                 padding: 0;
+                background: #0077b6;
                 li{
                         border: 1px solid white;
                 }
@@ -61,14 +65,21 @@ export const DivFavoritos = styled.div`
 `
 export const BotonesCrud = styled.button`
         border: none;
+        
         font-size: 1em;
+        background-color: #042275;
+        padding: 1em;
+        align-items: center;
+        border-radius: 50%;
+        margin-left: .5em;
+        :hover {
+                background-color: #023e8a;
+        }
         path:active{
                         color:blue;
                 }
         svg{
                 font-size: 1.5em;
-                margin-left: .7em;
-                
         }
 `
 
@@ -501,8 +512,10 @@ export const DivNav2 = styled.nav`
 export const Pokemones = styled.div`
         width: 100%;
         margin-top: 140px;
-        
         text-align: center;
+        button{
+                background-color: #0077b6;
+        }
 `
 
 export const PokeBoton = styled.div`
@@ -549,5 +562,12 @@ export const CardPokemon = styled.div`
 export const AlertToasty = styled.div`
         background-color: red;
 `
-
+export const ProgressCircle = styled.div`
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20vmax;
+        background: #176aad;
+`
 

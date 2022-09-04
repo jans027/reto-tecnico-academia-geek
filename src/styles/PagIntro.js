@@ -383,7 +383,7 @@ text-align: center;
 justify-content: center;
 `
 export const InputContainer = styled.div`
-  position:relative;
+    position:relative;
     height: 45px;
     width: 90%;
     margin-bottom: 17px;
@@ -395,25 +395,29 @@ export const Input1 = styled.input`
 position:relative;
 width: 358px;
 height: 44px;
-border: 1px solid #B0C3FD;
+/* border: 1px solid red; */
 border-radius: 44px;
 font-size: 16px;
 padding: 0 20px;
 outline: none;
 z-index: 1;
+/* background: #a2d2ff; */
+::placeholder{
+    color:#0077b6;
+}
 &:focus{ top: -7px;
-    /* border-color:  #39ff14; */
     left: 3px;
     z-index: 10;
     font-size: 14px;
     font-weight: 600;
-    color:rgba(191, 195, 252, 1);
+    color:#00b4d8;
     }
     &:not(:placeholder-shown){top: -7px;
         left: 3px;
         z-index: 10;
         font-size: 14px;
-        font-weight: 600;}
+        font-weight: 600;
+    }
 
 `
 export const Label = styled.label`

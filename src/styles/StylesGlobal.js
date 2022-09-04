@@ -40,6 +40,7 @@ export const NavBarStyled = styled.nav`
             font-size: .8em;
             margin-right: .5em;
             background-color: #042275;
+            padding: .4em 0 0 0;
         }
         svg{
             background-color: #042275;

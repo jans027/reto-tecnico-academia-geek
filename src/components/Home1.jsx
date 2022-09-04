@@ -84,13 +84,15 @@ export const Home1 = () => {
 
   const botonFavoritos = async (pokeData) => {
 
+    navigate("/home");
+
     const nombre = pokeData.name
     const imagen1 = pokeData.sprites.front_shiny
     const habilidad = "Es muy fuerte"
 
 
     await addDoc(productsCollection, { nombre: nombre, imagen: imagen1, habilidad: habilidad })
-    navigate("/home");
+    
     // console.log(nombre, imagen1, habilidad )
   }
 
@@ -101,7 +103,7 @@ export const Home1 = () => {
 
 
   return (
-    <div>
+    <section>
       <NavBar />
       <Pokemones >
 
@@ -209,7 +211,7 @@ export const Home1 = () => {
         ))
       }
 
-    </div>
+    </section>
   )
 }
 

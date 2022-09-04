@@ -36,25 +36,9 @@ export function SingUp() {
     reset();
   }
 
-  // const [error, setError] = useState("");
-  // const navigate = useNavigate();
-
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   setError("");
-  //   try {
-  //     await singup(user.email, user.password, user.displayName, user.phoneNumber);
-  //     navigate("/");
-  //     console.log(user)
-
-  //   } catch (error) {
-  //     setError(error.message);
-  //   }
-  // }
 
 
-
-  console.log(user);
+  // console.log(user);
   return (
     <section>
       <div className="col-12">
@@ -89,17 +73,17 @@ export function SingUp() {
                     <Form onSubmit={handleSubmit}>
 
                       <InputContainer className="mb-2 mt-3">
-                        <Label htmlFor="email">Email</Label>
-                        <Input1 type="email" name="email" onChange={(e) => setUser({ ...user, email: e.target.value })} placeholder="youremail@gmail.com" />
+                        {/* <Label htmlFor="email">Email</Label> */}
+                        <Input1 type="email" name="email" onChange={(e) => setUser({ ...user, email: e.target.value })} placeholder="Email" />
                       </InputContainer>
                       <InputContainer className="mb-3 mt-3">
-                        <Label htmlFor="name">Name</Label>
-                        <Input1 type="text" name="name" onChange={(e) => setUser({ ...user, name: e.target.value })} placeholder="username" />
+                        {/* <Label htmlFor="name">Name</Label> */}
+                        <Input1 type="text" name="name" onChange={(e) => setUser({ ...user, name: e.target.value })} placeholder="Username" />
                       </InputContainer>
                       <InputContainer className="mb-2">
-                        <Label htmlFor="password">Password</Label>
+                        {/* <Label htmlFor="password">Password</Label> */}
                         <Input1 type="password" name="password" onChange={(e) => setUser({ ...user, password: e.target.value })}
-                          placeholder="*************" />
+                          placeholder="Password" />
                       </InputContainer>
                       <div className="col-12">
                         <div className="row">
