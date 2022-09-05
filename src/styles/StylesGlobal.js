@@ -75,7 +75,7 @@ export const NavBarStyled = styled.nav`
 `
 
 export const NavBarStyled1 = styled.nav`
-    height: 40px;
+    height: 60px;
     width:100%;
     display: flex;
     flex-direction:row;
