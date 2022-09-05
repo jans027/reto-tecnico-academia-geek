@@ -52,7 +52,7 @@ const Favoritos = () => {
     const [products, setProducts] = useState([]);
     // console.log(products)
 
-    const productsCollection = collection(db, idUser)
+    const productsCollection = collection(db, `${idUser}`)
 
     const getProducts = async () => {
         try {
@@ -83,7 +83,7 @@ const Favoritos = () => {
 
     const botonUpdate = async () => {
 
-        const productDoc = doc(db, idUser, idUpdate)
+        const productDoc = doc(db, `${idUser}`, idUpdate)
         // console.log(  productDoc   )
         await updateDoc(productDoc, {
             habilidad: textoUpdate
@@ -97,11 +97,11 @@ const Favoritos = () => {
     const botonDelete = async (idpoke) => {
         // console.log(idpoke)
 
-        const productDoc = doc(db, idUser, idpoke)
+        const productDoc = doc(db, `${idUser}`, idpoke)
         if (productDoc !== 0) {
             // console.log(productDoc.path)
 
-            await deleteDoc(doc(db, idUser, idpoke))
+            await deleteDoc(doc(db, `${idUser}`, idpoke))
             await Toast.fire({
                 icon: 'success',
                 title: 'Borrando Pokemon...'

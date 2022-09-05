@@ -49,8 +49,8 @@ export function LogIn() {
         }).then((result) => {
           if (result.isConfirmed) {
             dispatch(LoginWithEmail(user.email, user.password));
-            // alert('ok')
-            navigate("/Home1");// cambiar ruta...................................
+            alert('ok')
+            // navigate("/home1");// cambiar ruta...................................
           } 
         })
       }
@@ -95,7 +95,8 @@ export function LogIn() {
               <Form onSubmit={handleSubmit}>
                 <InputContainer className="mb-3 mt-3">
                   {/* <Label htmlFor="email">Email</Label> */}
-                  <Input1 type="email" name="email" onChange={handleChange} placeholder="Email" />
+                  <Input1 type="email" name="email" onChange={handleChange} 
+                  placeholder="Email" />
                 </InputContainer>
                 <InputContainer className="mb-2">
                   {/* <Label htmlFor="password">Password</Label> */}

@@ -1,39 +1,61 @@
 import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { 
+import {
   ButtonIntro1,
-  TextIntro, 
-  Singupfrm, 
-  Form, 
-  Input1, 
-  InputContainer 
+  TextIntro,
+  Singupfrm,
+  Form,
+  Input1,
+  InputContainer
 } from '../styles/PagIntro'
 import { registerWithEmail } from "../Redux/Actions/userAction";
 import { DivCard2, DivPadre2 } from "../styles/Styles1";
+import Swal from "sweetalert2";
 
 export function SingUp() {
   // const { singup } = useAuth();
 
   const [user, setUser] = useState({
     email: "",
-    name: "",
+    displayName: "",
     password: "",
   });
 
-  const reset = () => {
-    setUser(" ")
-  }
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [error, setError] = useState("");
 
-  const handleSubmit = (e) => {
+  // Sweat alert........................................................
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    navigate("/LogIn");
-    dispatch(registerWithEmail(user.email, user.password, user.name));
-    reset();
-  }
+    setError("");
+
+    if (user.email === "" || user.displayName=== "" ||  user.password === "") {
+      console.log('eooooooooooooo', user)
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Todos los Campos son Obligatorios!',
+      })
+    } else {
+      Swal.fire({
+        title: 'Good job!',
+        text: 'Usuario Guardado Correctamente!',
+        icon: 'success',
+
+      }).then((result) => {
+        if (result.isConfirmed) {
+          dispatch(registerWithEmail(user.email, user.password, user.displayName))
+          // alert('ok')
+          navigate("/Login");// cambiar ruta...................................
+        }
+      })
+    }
+    e.target.reset();//metodo que resetea campos ................................
+  };
+  // console.log(user);
 
 
 
@@ -45,7 +67,7 @@ export function SingUp() {
           <div className="container">
             <DivPadre2 className="col-12" Style="margin-top:-100px">
               <DivCard2 className="container d-flex" Style="justify-content: center;aling-items:center;">
-              <img src="https://i.ibb.co/ck7kfQn/580b57fcd9996e24bc43c325.png" alt="picachu" border="0" />
+                <img src="https://i.ibb.co/ck7kfQn/580b57fcd9996e24bc43c325.png" alt="picachu" border="0" />
               </DivCard2>
             </DivPadre2>
 
@@ -77,7 +99,7 @@ export function SingUp() {
                       </InputContainer>
                       <InputContainer className="mb-3 mt-3">
                         {/* <Label htmlFor="name">Name</Label> */}
-                        <Input1 type="text" name="name" onChange={(e) => setUser({ ...user, name: e.target.value })} placeholder="Username" />
+                        <Input1 type="text" name="name" onChange={(e) => setUser({ ...user, displayName: e.target.value })} placeholder="Username" />
                       </InputContainer>
                       <InputContainer className="mb-2">
                         {/* <Label htmlFor="password">Password</Label> */}

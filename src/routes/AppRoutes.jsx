@@ -21,7 +21,6 @@ export const AppRoutes = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-
         onAuthStateChanged(auth, (user) => {
             if (user?.uid) {
                 dispatch(loginProvider(user.uid, user.displayName))
@@ -43,7 +42,7 @@ export const AppRoutes = () => {
                 <Route path="/home" element={<PublicRoutes isAutentication={auth1}><Home /></PublicRoutes>} />
 
                 <Route path='Favoritos' element={<PrivateRoutes isAutentication={auth1}> <Favoritos /> </PrivateRoutes>} />
-                {/* <Route path='/' element={<PrivateRoutes isAutentication={auth1}> <Home /> </PrivateRoutes>} /> */}
+                <Route path='/' element={<PrivateRoutes isAutentication={auth1}> <Home /> </PrivateRoutes>} />
                 <Route path="/home1" element={<PrivateRoutes isAutentication={auth1}><Home1 /></PrivateRoutes>} />
                 <Route path="*" element={<Navigate to="/login" />} />
                 <Route path="/" element={<Home />} />
