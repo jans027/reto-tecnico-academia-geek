@@ -7,7 +7,7 @@ export const NavBarStyled = styled.nav`
     position: fixed;
     top: 0;
     font-size: 1.5em;
-    height: 90px;
+    height: 110px;
     width:100%;
     display: flex;
     justify-content: space-between;
@@ -75,7 +75,7 @@ export const NavBarStyled = styled.nav`
 `
 
 export const NavBarStyled1 = styled.nav`
-    height: 60px;
+    height: 40px;
     width:100%;
     display: flex;
     flex-direction:row;
