@@ -33,7 +33,7 @@ export function SingUp() {
     setError("");
 
     if (user.email === "" || user.displayName=== "" ||  user.password === "") {
-      console.log('eooooooooooooo', user)
+      // console.log('eooooooooooooo', user)
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
@@ -79,7 +79,7 @@ export function SingUp() {
                   </div>
                   <div className="col-12">
                     <h5>Create a new account by filling in all the
-                      fields or log in to an existing account</h5>
+                      fields or login to an existing account</h5>
                   </div>
                 </TextIntro>
               </div>

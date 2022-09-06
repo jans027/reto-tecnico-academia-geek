@@ -15,6 +15,10 @@ import { useDispatch } from "react-redux";
 import { DivCard2, DivPadre2 } from "../styles/Styles1";
 import Swal from "sweetalert2";
 
+
+
+
+
 export function LogIn() {
 
   const navigate = useNavigate();
@@ -49,8 +53,8 @@ export function LogIn() {
         }).then((result) => {
           if (result.isConfirmed) {
             dispatch(LoginWithEmail(user.email, user.password));
-            alert('ok')
-            // navigate("/home1");// cambiar ruta...................................
+            // alert('ok')
+            navigate("/home1");// cambiar ruta...................................
           } 
         })
       }

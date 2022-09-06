@@ -79,8 +79,7 @@ export const Home1 = () => {
   };
 
   // CRUD favoritos........................
-
-  const productsCollection = collection(db, idUser)
+  const productsCollection = collection(db, `${idUser}`)
 
   const botonFavoritos = async (pokeData) => {
 
@@ -88,7 +87,6 @@ export const Home1 = () => {
     const nombre = pokeData.name
     const imagen1 = pokeData.sprites.front_shiny
     const habilidad = "Es muy fuerte"
-
 
     await addDoc(productsCollection, { nombre: nombre, imagen: imagen1, habilidad: habilidad })
     // console.log(nombre, imagen1, habilidad )
