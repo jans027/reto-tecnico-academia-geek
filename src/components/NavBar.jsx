@@ -125,7 +125,7 @@ const NavBar = () => {
                 <NavBarStyled>
 
                     <Link to="/Home" >
-                        <img src="https://i.ibb.co/7GF1fZ9/logo.png" alt="logo" border="0" />
+                        <img src="https://i.ibb.co/bv7RL7v/580b57fcd9996e24bc43c325.png" alt="logo" border="0" />
                     </Link>
 
 
