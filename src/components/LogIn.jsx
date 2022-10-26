@@ -73,7 +73,7 @@ export function LogIn() {
 
         <DivPadre2 className="col-12" Style="margin-top:-100px">
           <DivCard2 className="container d-flex" Style="justify-content: center;aling-items:center;">
-          <img src="https://i.ibb.co/ck7kfQn/580b57fcd9996e24bc43c325.png" alt="picachu" border="0" />
+          <img src="https://i.ibb.co/bv7RL7v/580b57fcd9996e24bc43c325.png" alt="picachu" border="0" />
           </DivCard2>
         </DivPadre2>
 
