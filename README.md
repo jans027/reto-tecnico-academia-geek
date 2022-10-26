@@ -1,3 +1,7 @@
+
+Url despliege : reto-tecnico-academia-geek-2fotnwer7-jans027.vercel.app
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
