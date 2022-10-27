@@ -2,7 +2,7 @@
 
 Prueba técnica para desarrollador FrontEnd haciendo uso de React JS!
 
-(https://github.com/jans027/reto-tecnico-academia-geek/blob/master/images/foto1.png)
+![Image text](https://github.com/jans027/reto-tecnico-academia-geek/blob/master/src/images/foto1.png)
 
 
 Resumen
