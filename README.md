@@ -1,7 +1,8 @@
 
 
 Prueba técnica para desarrollador FrontEnd haciendo uso de React JS!
-[Captura desde 2022-10-26 21-08-37](https://user-images.githubusercontent.com/87904137/198176461-bc44917e-7d8d-4977-8a6d-7dc84e303c59.png)
+
+
 
 
 Resumen
