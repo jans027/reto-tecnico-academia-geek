@@ -2,7 +2,6 @@
 
 Prueba técnica para desarrollador FrontEnd haciendo uso de React JS!
 
-(https://raw.githubusercontent.com/parzibyte/WaterPy/master/assets/ImagenV1.png)
 (https://github.com/jans027/reto-tecnico-academia-geek/blob/master/images/foto1.png)
 
 
