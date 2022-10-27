@@ -21,6 +21,7 @@ Aparecen los 25 primeros pokemon .
 Los pokemon se pueden filtrar por nombre.
 Se emplea el router de React para que al hacer clic sobre la tarjeta de un pokemon, aparezca una pantalla de detalle con más información detallada de ese pokemon. Por ejemplo: altura, peso, habilidades, imágenes del pokemon.
 
+![Image text](https://github.com/jans027/reto-tecnico-academia-geek/blob/master/src/images/foto2.png)
 
 FAQ:
 
@@ -40,3 +41,5 @@ Se utiliza Redux en el manejo de los datos.
 
 
 Url despliege : https://reto-tecnico-academia-geek-2fotnwer7-jans027.vercel.app
+
+![Image text](https://github.com/jans027/reto-tecnico-academia-geek/blob/master/src/images/foto3.png)
