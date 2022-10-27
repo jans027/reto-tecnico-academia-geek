@@ -21,6 +21,8 @@ import { useNavigate } from 'react-router';
 import { addDoc, collection } from 'firebase/firestore';
 import { db } from '../firebase';
 import { Link } from 'react-router-dom';
+//images
+import logo from '../imagenes/pokebola.png'
 
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -111,12 +113,8 @@ const NavBar = () => {
 
         await addDoc(productsCollection, { nombre: nombre, imagen: imagen1, habilidad: habilidad })
         
-        // console.log(nombre, imagen1, habilidad )
     }
 
-    // const botonPokeFavoritos = () => {
-    //     navigate("/Favoritos");
-    // }
 
 
     return (
@@ -125,7 +123,7 @@ const NavBar = () => {
                 <NavBarStyled>
 
                     <Link to="/Home" >
-                        <img src="https://i.ibb.co/bv7RL7v/580b57fcd9996e24bc43c325.png" alt="logo" border="0" />
+                        <img src={logo} alt="logo" border="0" />
                     </Link>
 
 
